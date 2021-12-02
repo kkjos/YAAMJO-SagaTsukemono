@@ -1,13 +1,13 @@
 require 'test_helper'
 
-class Public::OrderDetailsControllerTest < ActionDispatch::IntegrationTest
+class Public::AddressesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get public_order_details_index_url
+    get public_addresses_index_url
     assert_response :success
   end
 
   test "should get edit" do
-    get public_order_details_edit_url
+    get public_addresses_edit_url
     assert_response :success
   end
 
