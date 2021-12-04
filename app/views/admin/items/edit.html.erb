@@ -1,2 +1,32 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<h3>商品編集</h3>
+<%= form_with model:@item, url:admin_item_path do |f| %>
+  <div>
+    <%= f.label :image, "画像" %>
+    <%= f.attachment_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :name, "商品名" %>
+    <%= f.text_field :name,autocomplete: "商品名" %>
+  </div>
+  <div class="field">
+    <%= f.label :introduction, "商品説明" %>
+    <%= f.text_area :introduction, autocomplete: "商品説明" %>
+  </div>
+  <div class="field">
+      <%= f.label :price, "税抜き価格" %>
+      <%= f.text_field :price, autocomplete: "価格" %>
+  </div>
+  <div class="field">
+    <div class = "radio-button__is_active">
+      <%= f.radio_button :is_active, 'true' %>
+      <%= f.label :is_active, '販売中', value: true %>
+    </div>
+    <div class = "radio-button__is_active">
+      <%= f.radio_button :is_active, 'false' %>
+      <%= f.label :is_active, '販売停止中', value: false %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+<% end %>
