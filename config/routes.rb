@@ -11,9 +11,14 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     resources :items, only: [:index, :show]
-    resources :customers, except: [:new, :create, :index, :destroy]
-    get '/customers/unsubscribe' => 'customers#unsubscribe'
-    post '/customers/withdraw' => 'customers#withdraw'
+    resources :customers, only: [] do
+      collection do
+      get :show
+      get :edit
+      get :unsubscribe
+      patch :withdraw
+    end
+    end
     resources :cart_items, except: [:new, :show, :edit]
     get '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :orders, except: [:edit, :update, :destroy]
