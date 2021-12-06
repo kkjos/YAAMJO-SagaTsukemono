@@ -1,2 +1,11 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<h3>商品詳細</h3>
+
+<div><%= @item.name %></div>
+<div><%= attachment_image_tag @item, :image, :fill, 300, 300 %></div>
+<div><%= @item.introduction %></div>
+<div><%= @item.price %></div>
+<% if @item.is_active %>
+  <div>販売中</div>
+<% else %>
+  <div>販売停止中</div>
+<% end %>
