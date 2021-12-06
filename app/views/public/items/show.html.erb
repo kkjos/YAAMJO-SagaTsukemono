@@ -1,11 +1,25 @@
 <h3>商品詳細</h3>
 
-<div><%= @item.name %></div>
-<div><%= attachment_image_tag @item, :image, :fill, 300, 300 %></div>
-<div><%= @item.introduction %></div>
-<div><%= @item.price %></div>
-<% if @item.is_active %>
-  <div>販売中</div>
-<% else %>
-  <div>販売停止中</div>
-<% end %>
+<div>
+  <div><%= @item.name %></div>
+  <div><%= attachment_image_tag @item, :image, :fill, 300, 300 %></div>
+  <div><%= @item.introduction %></div>
+  <div><%= @item.price %></div>
+  <% if @item.is_active %>
+    <div>販売中</div>
+  <% else %>
+    <div>販売停止中</div>
+  <% end %>
+</div>
+
+<div>
+  <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
+    <%= f.hidden_field :item_id, value:@item.id %>
+    <%= f.hidden_field :customer_id, value:current_customer.id %>
+    <div>
+      <%= f.label :amount, "数量" %>
+      <%= f.select :amount, *[1..10] %>
+    </div>
+    <%= f.submit "カートに入れる" %>
+  <% end %>
+</div>
