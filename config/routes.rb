@@ -19,8 +19,11 @@ Rails.application.routes.draw do
       patch :withdraw
     end
     end
-    resources :cart_items, except: [:new, :show, :edit]
-    get '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, except: [:new, :show, :edit] do
+      collection do
+        delete :destroy_all
+      end
+    end
     resources :orders, except: [:edit, :update, :destroy]
     post '/orders/confirm' => 'orders#confirm'
     get '/orders/confirm_view' => 'orders#confirm_view'

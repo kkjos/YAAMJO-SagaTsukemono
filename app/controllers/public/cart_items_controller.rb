@@ -16,7 +16,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    @cart_items.destroy_all
+    redirect_to request.referer
   end
 
   def create
