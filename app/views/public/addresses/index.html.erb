@@ -1,2 +1,38 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+<h3>宛先一覧</h3>
+
+<div>
+  <%= form_with model:@address, url:addresses_path, local:true do |f| %>
+  <div>
+    <%= f.hidden_field :customer_id, value:current_customer.id %>
+  </div>
+  <div>
+    <%= f.label :name, "宛先名" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :postal_code, "郵便番号" %>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div>
+    <%= f.label :address, "住所" %>
+    <%= f.text_area :address %>
+  </div>
+  <%= f.submit "登録" %>
+  <% end %>
+</div>
+<div>
+  <table>
+    <tr>
+      <th>名前</th>
+      <th>郵便番号</th>
+      <th>住所</th>
+    </tr>
+    <tr>
+      <% @addresses.each do |address| %>
+      <td><%= address.name %></td>
+      <td><%= address.postal_code %></td>
+      <td><%= address.address %></td>
+      <% end %>
+    </tr>
+  </table>
+</div>
