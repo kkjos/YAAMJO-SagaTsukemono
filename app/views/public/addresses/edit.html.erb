@@ -1,2 +1,22 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<h3>宛先変更</h3>
+
+<div>
+  <%= form_with model:@address, url:address_path, local:true do |f| %>
+  <div>
+    <%= f.hidden_field :customer_id, value:current_customer.id %>
+  </div>
+  <div>
+    <%= f.label :name, "宛先名" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :postal_code, "郵便番号" %>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div>
+    <%= f.label :address, "住所" %>
+    <%= f.text_area :address %>
+  </div>
+  <%= f.submit "変更する" %>
+  <% end %>
+</div>

@@ -27,12 +27,14 @@
       <th>郵便番号</th>
       <th>住所</th>
     </tr>
+    <% @addresses.each do |address| %>
     <tr>
-      <% @addresses.each do |address| %>
       <td><%= address.name %></td>
       <td><%= address.postal_code %></td>
       <td><%= address.address %></td>
-      <% end %>
+      <td><%= link_to "変更する", edit_address_path(address) %></td>
+      <td><%= link_to "削除する", address_path(address), method: :delete %></td>
     </tr>
+    <% end %>
   </table>
 </div>
