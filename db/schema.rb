@@ -74,9 +74,6 @@ ActiveRecord::Schema.define(version: 2021_12_02_062506) do
   create_table "order_details", force: :cascade do |t|
     t.integer "order_id", null: false
     t.integer "item_id", null: false
-    t.string "postal_code", null: false
-    t.string "address", null: false
-    t.string "name", null: false
     t.integer "price", null: false
     t.integer "amount", null: false
     t.integer "making_status", null: false
@@ -86,6 +83,9 @@ ActiveRecord::Schema.define(version: 2021_12_02_062506) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.string "name", null: false
     t.integer "shipping_cost", null: false
     t.integer "total_payment", null: false
     t.integer "payment_method", null: false
