@@ -24,12 +24,15 @@ Rails.application.routes.draw do
         delete :destroy_all
       end
     end
-    resources :orders, except: [:edit, :update, :destroy]
-    post '/orders/confirm' => 'orders#confirm'
-    get '/orders/confirm_view' => 'orders#confirm_view'
-    get '/orders/complete' => 'orders#complete'
-    resources :addresses, except: [:show, :new]
-  end
+    resources :orders, except: [:edit, :update, :destroy] do
+      collection do
+        post :confirm
+        get :confirm_view
+        get :complete
+      end
+    end
+      resources :addresses, except: [:show, :new]
+    end
 
   namespace :admin do
     root to: 'homes#top'
