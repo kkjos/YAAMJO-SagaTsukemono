@@ -8,8 +8,8 @@
     order:
       status:
         waiting_for_deposit: "入金待ち"
-        payment_confirmation: "入金確認"
-        production: "制作中"
+        production_start: "入金確認・制作開始"
+        ready_to_ship: "発送準備中"
         shipped: "発送済み"
       payment_method:
         credit_card: "クレジットカード"

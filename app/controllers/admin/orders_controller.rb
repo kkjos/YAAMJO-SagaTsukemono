@@ -7,6 +7,11 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
+    if @order.production_start?
+      @order.order_details.each do |order_detail|
+      order_detail.production!
+      end
+    end
     redirect_to request.referer
   end
 
