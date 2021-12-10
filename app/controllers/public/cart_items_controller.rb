@@ -24,6 +24,7 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.save
+    flash[:notice] = 'カートに商品を追加しました。'
     redirect_to cart_items_path
   end
 

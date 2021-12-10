@@ -11,6 +11,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(customer_params)
     redirect_to customer_path
+    flash[:notice] = 'マイページを更新しました。'
   end
 
   def unsubscribe
