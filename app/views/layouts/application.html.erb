@@ -5,6 +5,19 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="/jquery.bxslider.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" /></script>
+    <script src="/jquery.bxSlider.min.js"></script>
+    <script>
+    $(function(){
+      $('.bxslider').bxSlider({
+        auto: true,
+        slideWidth: 640,
+        minSlides: 1
+      });
+    });
+    </script>
+
     <script src="https://kit.fontawesome.com/448938d6cc.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
