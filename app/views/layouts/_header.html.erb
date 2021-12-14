@@ -1,13 +1,15 @@
-<header class = "header" style="background-color:rgba(255,239,15,0.8);">
+<header class = "header" style="background-color:rgba(255,239,15,1);">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-
       <% if admin_signed_in? %>
-        <a class="navbar-brand" href="/admin"><span><%= image_tag 'logo.png', :size =>'280x70', class: "img-fluid img-thumbnail" %></span></a>
+        <a class="navbar-brand" href="/admin"><span><%= image_tag 'logo.png', :size =>'280x70', class: "img-fluid" %></span></a>
       <% else %>
-        <a class="navbar-brand" href="/"><span><%= image_tag 'logo.png', :size =>'280x70', class: "img-fluid img-thumbnail" %></span></a>
+        <a class="navbar-brand" href="/"><span><%= image_tag 'logo.png', :size =>'280x70', class: "img-fluid" %></span></a>
       <% end %>
-
+      <div class = "mt-5">
+        <a class="fab fa-instagram fa-2x" href="https://www.instagram.com/explore/locations/273444237/japan/kyoto-japan/?hl=ja" style="color:green;"></a>
+        <a class="fab fa-facebook-square fa-2x ml-3" href="https://www.facebook.com/sagatsukemonoyamajo" style="color:green;"></a>
+      </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
