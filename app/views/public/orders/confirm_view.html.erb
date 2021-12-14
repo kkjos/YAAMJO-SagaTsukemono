@@ -26,6 +26,10 @@
     <div class = "col-6">
       <table class = "table table-borderd mt-5">
         <tr>
+          <th>支払い方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
           <th>送料</th>
           <td><%= @order.shipping_cost %></td>
         </tr>
@@ -36,10 +40,6 @@
         <tr>
           <th>請求金額</th>
           <td><%= @order.shipping_cost + @item_total.to_i %></td>
-        </tr>
-        <tr>
-          <th>支払い方法</th>
-          <td><%= @order.payment_method_i18n %></td>
         </tr>
       </table>
     </div>
