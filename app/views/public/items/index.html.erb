@@ -1,14 +1,15 @@
-<h3>商品一覧</h3>
-<div>
-  <% @items.each do |item| %>
-    <div><%= attachment_image_tag item, :image, :fill, 300, 300 %></div>
-    <div><%= item.name %></div>
-    <div><%= item.price %></div>
-    <% if item.is_active %>
-      <div>販売中</div>
-    <% else %>
-      <div>販売停止中</div>
+<div class = "container">
+  <h3 class = "title my-3">商品一覧<small class = "text-muted">（全<%= @items.count %>件）</small></h3>
+  <div class="item d-flex align-content-between flex-wrap">
+    <% @items.each do |item| %>
+      <div class = "col-6 d-flex mb-5">
+        <div class = "col-6"><%= attachment_image_tag item, :image, size: "240x180" %></div>
+        <div class = "col-6">
+          <h4 class ="item-name"><%= item.name %></h4>
+          <h4 class ="item.price my-4 ml-2"><%= item.price %>円<small>（税込<%= item.with_tax_price %>円）</small></h4>
+          <%= link_to "詳細へ", item_path(item), class: "btn btn-primary" %>
+        </div>
+      </div>
     <% end %>
-    <%= link_to "詳細へ", item_path(item) %>
-  <% end %>
+  </div>
 </div>

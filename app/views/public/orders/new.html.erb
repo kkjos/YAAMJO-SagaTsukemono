@@ -1,35 +1,63 @@
-<h3>注文情報入力</h3>
-
-<div>
-  <div>
-    <%= form_with model:@order, url:confirm_orders_path, local:true do |f| %>
-    <div>
-      <h6>支払い方法</h6>
-      <div>
-        <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+<div class = "container">
+  <div class = "row">
+    <h3 class = "title mt-5">注文情報入力<br>
+      <small class = "text-secondary ml-2">①で支払い方法指定後、②でお届け先を選んでください。</small>
+    </h3>
+  </div>
+  <%= form_with model:@order, url:confirm_orders_path, local:true do |f| %>
+  <div class = "row mt-3">
+    <div class = "form col-6 border">
+      <h4>①支払い方法</h4>
+      <div class = "form-check">
+        <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: "checked" %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
       </div>
-      <div>
+      <div class = "form-check">
         <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
       </div>
     </div>
-    <div>
-      <h6>お届け先</h6>
-      <div>
-        <%= f.radio_button :address_option, 0 %>
+    <div class = "form col-6 border">
+      <h4>②お届け先</h4>
+      <div class = "form-check">
+        <%= f.radio_button :address_option, 0, checked: "checked" %>
         <%= f.label :address_option_0, "ご自身の住所" %></br>
-        〒<%= current_customer.postal_code %>
-        <%= current_customer.address %></br>
-        <%= current_customer.last_name %>
-        <%= current_customer.first_name %>
+        <div class = "form-content ml-5">
+          〒<%= current_customer.postal_code %>
+          <%= current_customer.address %></br>
+          <%= current_customer.last_name %>
+          <%= current_customer.first_name %>
+        </div>
       </div>
-      <div>
+      <div class = "form-check">
         <%= f.radio_button :address_option, 1 %>
         <%= f.label :address_option_1, "登録済み住所から選択" %>
-        <%= f.select :address_id, options_from_collection_for_select(Address.where(customer_id: current_customer.id), :id, :full_address) %>
+        <div class = "form-content ml-5">
+          <%= f.select :address_id, options_from_collection_for_select(Address.where(customer_id: current_customer.id), :id, :full_address) %>
+        </div>
+      </div>
+      <div class="form-check">
+        <%= f.radio_button :address_option, 2 %>
+        <%= f.label :address_option_2, "新しいお届け先" %>
+        <table class = "table table-borderless ml-5">
+          <tr>
+            <th><%= f.label :name, "宛先名" %></th>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :postal_code, "郵便番号" %></th>
+            <td><%= f.text_field :postal_code %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :address, "住所" %></th>
+            <td><%= f.text_field :address %></td>
+          </tr>
+        </table>
       </div>
     </div>
-    <%= f.submit "登録" %>
-    <% end %>
+    <div class = "action mx-auto">
+      <%= f.submit "注文情報を確定して次に進む", class: "btn btn-success mt-5" %>
+    </div>
+  </div>
+  <% end %>
 </div>

@@ -14,3 +14,22 @@
  *= require_self
  */
 
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  padding-bottom: 120px;
+}
+.bxslider li {
+  display: none;
+}
+.bx-viewport .bxslider li {
+  display: block !important;
+}

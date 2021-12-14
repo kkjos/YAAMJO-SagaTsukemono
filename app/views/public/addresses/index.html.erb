@@ -1,40 +1,31 @@
-<h3>宛先一覧</h3>
-
-<div>
-  <%= form_with model:@address, url:addresses_path, local:true do |f| %>
-  <div>
-    <%= f.hidden_field :customer_id, value:current_customer.id %>
+<div class = "container">
+  <div class = "row">
+    <h3 class = "title mt-5">宛先一覧</h3>
   </div>
   <div>
-    <%= f.label :name, "宛先名" %>
-    <%= f.text_field :name %>
+    <table class = "table table-bordered">
+      <tr class="active" style="background-color:rgba(213,219,219,0.50);">
+        <th class = "col-2 text-center">名前</th>
+        <th class = "col-2 text-center">郵便番号</th>
+        <th class = "col-4 text-center">住所</th>
+        <th class = "col-2 text-center"></th>
+        <th class = "col-2 text-center"></th>
+      </tr>
+      <% @addresses.each do |address| %>
+      <tr>
+        <td class = "text-center"><%= address.name %></td>
+        <td class = "text-center"><%= address.postal_code %></td>
+        <td class = "text-center"><%= address.address %></td>
+        <td class = "text-center"><%= link_to "変更する", edit_address_path(address), class:"btn btn-success" %></td>
+        <td class = "text-center"><%= link_to "削除する", address_path(address), method: :delete, data: {confirm: '本当に削除してよろしいですか？'}, class:"btn btn-danger" %></td>
+      </tr>
+      <% end %>
+    </table>
   </div>
-  <div>
-    <%= f.label :postal_code, "郵便番号" %>
-    <%= f.text_field :postal_code %>
+  <div class = "row">
+    <div class = "col-8 offset-2">
+      <h5>新規登録</h5>
+      <%= render "public/addresses/info", address: @address %>
+    </div>
   </div>
-  <div>
-    <%= f.label :address, "住所" %>
-    <%= f.text_area :address %>
-  </div>
-  <%= f.submit "登録" %>
-  <% end %>
-</div>
-<div>
-  <table>
-    <tr>
-      <th>名前</th>
-      <th>郵便番号</th>
-      <th>住所</th>
-    </tr>
-    <% @addresses.each do |address| %>
-    <tr>
-      <td><%= address.name %></td>
-      <td><%= address.postal_code %></td>
-      <td><%= address.address %></td>
-      <td><%= link_to "変更する", edit_address_path(address) %></td>
-      <td><%= link_to "削除する", address_path(address), method: :delete %></td>
-    </tr>
-    <% end %>
-  </table>
 </div>

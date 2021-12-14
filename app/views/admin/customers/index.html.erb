@@ -1,28 +1,33 @@
-<h3>会員一覧</h3>
-
-<div>
-  <table>
-    <tr>
-      <th>会員番号</th>
-      <th>名前</th>
-      <th>フリガナ</th>
-      <th>電話番号</th>
-      <th>会員ステータス</th>
-      <th></th>
-    </tr>
-    <% @customers.each do |customer| %>
-    <tr>
-      <td><%= customer.id %></td>
-      <td><%= customer.last_name %><%= customer.first_name %></td>
-      <td><%= customer.last_name_kana %><%= customer.first_name_kana %></td>
-      <td><%= customer.telephone_number %></td>
-      <% if customer.is_deleted? %>
-      <td>退会済</td>
-      <% else %>
-      <td>有効</td>
-      <% end %>
-      <th><%= link_to "詳細へ", admin_customer_path(customer.id) %></th>
-    </tr>
-    <% end %>
-  </table>
+<div class = "container">
+  <div class = "row">
+    <h3 class = "title mt-5">会員一覧</h3>
+  </div>
+  <div class = "row">
+    <div class = "col-10 offset-1">
+      <table class = "table table-bordered">
+        <tr class="active" style="background-color:rgba(213,219,219,0.50);">
+          <th class = "col-2 text-center">会員番号</th>
+          <th class = "col-2 text-center">名前</th>
+          <th class = "col-2 text-center">フリガナ</th>
+          <th class = "col-2 text-center">電話番号</th>
+          <th class = "col-2 text-center">会員ステータス</th>
+          <th class = "col-2"></th>
+        </tr>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td class = "text-center"><%= customer.id %></td>
+            <td class = "text-center"><%= customer.last_name %><%= customer.first_name %></td>
+            <td class = "text-center"><%= customer.last_name_kana %><%= customer.first_name_kana %></td>
+            <td class = "text-center"><%= customer.telephone_number %></td>
+            <% if customer.is_deleted? %>
+            <td class = "text-center text-danger">退会済</td>
+            <% else %>
+            <td class = "text-center text-success">有効</td>
+            <% end %>
+            <td><%= link_to "詳細へ", admin_customer_path(customer.id), class: "btn btn-info btn-sm text-center" %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>

@@ -18,10 +18,17 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
+    elsif params[:order][:address_option] == "2"
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
     end
-
-    session[:order] = @order
-    redirect_to confirm_view_orders_path
+    if @order.postal_code.blank? || @order.address.blank? || @order.name.blank?
+      render :new
+    else
+      session[:order] = @order
+      redirect_to confirm_view_orders_path
+    end
   end
 
   def confirm_view

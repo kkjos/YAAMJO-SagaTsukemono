@@ -13,11 +13,12 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :customers, only: [] do
       collection do
-      get :show
-      get :edit
-      get :unsubscribe
-      patch :withdraw
-    end
+        get :show
+        patch :update
+        get :edit
+        get :unsubscribe
+        patch :withdraw
+      end
     end
     resources :cart_items, except: [:new, :show, :edit] do
       collection do

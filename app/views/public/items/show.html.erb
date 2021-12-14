@@ -1,25 +1,34 @@
-<h3>商品詳細</h3>
-
-<div>
-  <div><%= @item.name %></div>
-  <div><%= attachment_image_tag @item, :image, :fill, 300, 300 %></div>
-  <div><%= @item.introduction %></div>
-  <div><%= @item.price %></div>
-  <% if @item.is_active %>
-    <div>販売中</div>
-  <% else %>
-    <div>販売停止中</div>
-  <% end %>
-</div>
-
-<div>
-  <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
-    <%= f.hidden_field :item_id, value:@item.id %>
-    <%= f.hidden_field :customer_id, value:current_customer.id %>
-    <div>
-      <%= f.label :amount, "数量" %>
-      <%= f.select :amount, *[1..10] %>
+<div class = "container">
+  <h3 class = "title my-3">商品詳細</h3>
+  <div class = "row">
+    <div class = "col-5">
+      <div><%= attachment_image_tag @item, :image, :fill, 350, 350 %></div>
     </div>
-    <%= f.submit "カートに入れる" %>
-  <% end %>
+    <div class = "col-6 offset-1">
+      <h2 class = "item-name"><%= @item.name %></h2>
+      <div class = "ml-3">
+        <h4 class = "item-introduction"><%= @item.introduction %></h4>
+        <h3 class = "item-price"><%= @item.price %>円<small>（税込<%= @item.with_tax_price %>円）</small></h3>
+        <% if @item.is_active %>
+          <h4 class = "text-success">販売中</h4>
+        <% else %>
+          <h4 class = "text_danger">販売停止中</h4>
+        <% end %>
+        <% if customer_signed_in? %>
+        <div class = "cart-action mt-5">
+          <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
+            <%= f.hidden_field :item_id, value:@item.id %>
+            <%= f.hidden_field :customer_id, value:current_customer.id %>
+            <div class = "cart-action-sellect">
+              <%= f.label :amount, "数量" %>
+              <%= f.select :amount, *[1..10] %>（個数を選択してください）
+            </div>
+            <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+          <% end %>
+        <% end %>
+        <%= link_to "商品一覧にもどる", items_path, class:"link btn btn-primary mt-5 pull-right" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
