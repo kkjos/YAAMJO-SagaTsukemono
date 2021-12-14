@@ -1,24 +1,28 @@
-<h3>商品一覧</h3>
-
-<div>
-  <table>
-    <tr>
-      <th>商品名</th>
-      <th>税抜き価格</th>
-      <th>販売ステータス</th>
-      <th></th>
-    </tr>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <% if item.is_active %>
-          <td>販売中</td>
-        <% else %>
-          <td>販売停止中</td>
-        <% end %>
-        <td><%= link_to "商品詳細", admin_item_path(item.id) %></td>
+<div class = "container">
+  <div class = "row mt-5">
+    <h3 class = "title col-8">商品一覧</h3>
+    <div class = "col-4"><%= link_to "商品登録", new_admin_item_path, class: "btn btn-success btn-lg" %></div>
+  </div>
+  <div class = "col-10 offset-1 mt-1">
+    <table class = "table table-bordered">
+      <tr class="active" style="background-color:rgba(213,219,219,0.50);">
+        <th class = "col-2 text-center">商品名</th>
+        <th class = "col-4 text-center">税抜き価格(税込)</th>
+        <th class = "col-2 text-center">販売ステータス</th>
+        <th class = "col-2 text-center"></th>
       </tr>
-    <% end %>
-  </table>
+      <% @items.each do |item| %>
+        <tr>
+          <td class = "text-center"><%= item.name %></td>
+          <td class = "text-center"><%= item.price %>円<small>(<%= item.with_tax_price %>円)</small></td>
+          <% if item.is_active %>
+            <td class = "text-center text-success">販売中</td>
+          <% else %>
+            <td class = "text-center text-danger">販売停止中</td>
+          <% end %>
+          <td class = "text-center"><%= link_to "商品詳細", admin_item_path(item.id), class: "btn btn-primary btn-sm" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
