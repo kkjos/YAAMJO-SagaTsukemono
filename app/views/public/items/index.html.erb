@@ -1,14 +1,29 @@
 <div class = "container">
   <h3 class = "title my-3">商品一覧<small class = "text-muted">（全<%= @items.count %>件）</small></h3>
-  <div class="item d-flex align-content-between flex-wrap">
+  <div class="d-flex align-content-between flex-wrap">
     <% @items.each do |item| %>
       <div class = "col-6 d-flex mb-5">
         <div class = "col-6"><%= attachment_image_tag item, :image, size: "240x180" %></div>
         <div class = "col-6">
-          <h4 class ="item-name"><%= item.name %></h4>
-          <h4 class ="item-material"><%= item.material.name %></h4>
-          <h4 class ="item.price my-4 ml-2"><%= item.price %>円<small>（税込<%= item.with_tax_price %>円）</small></h4>
-          <%= link_to "詳細へ", item_path(item), class: "btn btn-primary" %>
+          <h4 class ="mb-2"><%= item.name %></h4>
+          <table class = "table table-borderless">
+            <tr>
+              <th>原菜:</th>
+              <td><%= item.material.name %></td>
+            </tr>
+            <tr>
+              <th>内容:</th>
+              <td><%= item.capacity %></td>
+            </tr>
+            <tr>
+              <th>価格:</th>
+              <td><%= item.price %>円<small>（税込<%= item.with_tax_price %>円）</small></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><%= link_to "詳細へ", item_path(item), class: "btn btn-primary" %></td>
+            </tr>
+          </table>
         </div>
       </div>
     <% end %>
