@@ -19,6 +19,10 @@
             <td><%= f.text_area :introduction, rows:"5", autocomplete: "商品説明",class: "form-control" %></td>
           </tr>
           <tr class = "field">
+            <th><%= f.label :capacity, "内容量" %></th>
+            <td><%= f.text_field :capacity,autocomplete: "内容量",class: "form-control" %></td>
+          </tr>
+          <tr class = "field">
             <th><%= f.label :price, "税抜き価格" %></th>
             <td><%= f.text_field :price, autocomplete: "価格",class: "form-control" %></td>
           </tr>
