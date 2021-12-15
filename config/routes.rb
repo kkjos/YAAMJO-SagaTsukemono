@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resources :customers, except: [:new, :create, :destroy]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
+    resources :materials, except: [:new, :show, :destroy]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

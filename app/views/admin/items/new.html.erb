@@ -15,6 +15,10 @@
             <td><%= f.text_field :name,autocomplete: "商品名",class: "form-control" %></td>
           </tr>
           <tr class = "field">
+            <th>原菜</th>
+            <td><%= f.select :material_id, options_from_collection_for_select(Material.all, :id, :name), class:"form-control" %></td>
+          </tr>
+          <tr class = "field">
             <th><%= f.label :introduction, "商品説明" %></th>
             <td><%= f.text_area :introduction, rows:"5", autocomplete: "商品説明",class: "form-control" %></td>
           </tr>
