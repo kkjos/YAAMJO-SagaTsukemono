@@ -1,0 +1,26 @@
+<div class = "container">
+  <div class = "row mt-5">
+    <h3 class = "title">ログイン</h2>
+  </div>
+  <div class = "row">
+    <div class = "col-8 offset-2">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table class = "table table-borderless">
+        <tr class = "field">
+          <th><%= f.label :email, "メールアドレス" %></th>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %></td>
+        </tr>
+        <tr class = "field">
+          <th><%= f.label :password, "パスワード" %></th>
+          <td><%= f.password_field :password, autocomplete: "current-password", class:"form-control" %></td>
+        </tr>
+        <tr class = "action">
+          <th></th>
+          <td><%= f.submit "ログイン", class:"btn btn-success" %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render "admin/shared/links" %>

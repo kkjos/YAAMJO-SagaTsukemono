@@ -1,0 +1,78 @@
+<div class = "container">
+  <div class = "row">
+    <h3 class = "title mt-5">注文詳細画面</h3>
+  </div>
+  <div class = "row">
+    <div class = "col-8 offset-2">
+      <table class = "table table-borderless">
+        <tr>
+          <th>注文日時</th>
+          <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th>お届け先名</th>
+          <td><%= @order.name %></td>
+        </tr>
+        <tr>
+          <th>お届け先住所</th>
+          <td>
+            〒<%= @order.postal_code %><br>
+            <%= @order.address %>
+          </td>
+        </tr>
+        <tr>
+          <th>注文ステータス</th>
+          <td>
+            <%= form_with model:@order, url:admin_order_path(@order), local:true do |f| %>
+            <%= f.select :status, options_for_select(Order.statuses_i18n.invert, selected: f.object.status) %>
+            <%= f.submit "更新する", class: "btn btn-success btn-sm" %>
+          </td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class = "row mt-2">
+    <div class = "col-8">
+      <table class = "table table-bordered">
+        <tr class="active" style="background-color:rgba(213,219,219,0.50);">
+          <th>商品名</th>
+          <th>税込価格</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>制作ステータス</th>
+        </tr>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= order_detail.price %>円</td>
+            <td><%= order_detail.amount %>点</td>
+            <td><%= order_detail.subtotal %>円</td>
+            <td>
+              <%= form_with model:order_detail, url:admin_order_detail_path(order_detail), local:true do |f| %>
+                <%= f.select :making_status, options_for_select(OrderDetail.making_statuses_i18n.invert, selected: f.object.making_status) %>
+                <%= f.submit "変更", class: "btn btn-success btn-sm" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class = "col-4">
+      <table class = "table">
+        <tr>
+          <th>送料</th>
+          <th><%= @order.shipping_cost %>円</th>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <th><%= @order_details.sum(&:subtotal) %>円</th>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <th><%= @order.total_payment %>円</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

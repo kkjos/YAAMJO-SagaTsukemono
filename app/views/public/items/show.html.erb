@@ -1,0 +1,58 @@
+<div class = "container">
+  <h3 class = "title my-3">商品詳細</h3>
+  <div class = "row">
+    <div class = "col-5">
+      <div><%= attachment_image_tag @item, :image, :fill, 350, 350 %></div>
+    </div>
+    <div class = "col-6 offset-1">
+      <h2 class = "mb-3"><%= @item.name %></h2>
+      <div class = "ml-3">
+        <table class = "table table-borderless h5">
+          <tr>
+            <th class = "col-2">原菜</th>
+            <td class = "col-4"><%= @item.material.name %></td>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <th>内容量</th>
+            <td><%= @item.capacity %></td>
+          </tr>
+          <tr>
+            <th>価格</th>
+            <td><%= @item.price %>円<small>（税込<%= @item.with_tax_price %>円）</small></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <% if @item.is_active %>
+                <h4 class = "text-success">販売中</h4>
+              <% else %>
+                <h4 class = "text-danger">販売停止中</h4>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <% if customer_signed_in? %>
+                <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
+                  <%= f.hidden_field :item_id, value:@item.id %>
+                  <%= f.hidden_field :customer_id, value:current_customer.id %>
+                  <div>
+                    <%= f.label :amount, "数量" %>
+                    <%= f.select :amount, *[1..10] %><br>
+                    個数を選択してください
+                  </div>
+                  <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+                <% end %>
+              <% end %>
+            </td>
+            <td><%= link_to "商品一覧にもどる", items_path, class:"link btn btn-primary mt-5 pull-right" %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

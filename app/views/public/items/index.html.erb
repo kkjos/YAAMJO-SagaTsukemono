@@ -1,0 +1,41 @@
+<div class = "container">
+  <h3 class = "title my-3">全ての商品<small class = "text-muted">（全<%= @items.count %>件）</small></h3>
+  <div class = "border-bottom d-flex flex-wrap">
+    <small>原菜別で見る</small>
+    <% @materials.each do |material| %>
+      <%= link_to items_search_path(:id=> material.id) do %>
+        <div class = "mx-2 h5">
+          <%= material.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="d-flex align-content-between flex-wrap mt-2">
+    <% @items.each do |item| %>
+      <div class = "col-6 d-flex mb-5">
+        <div class = "col-6"><%= attachment_image_tag item, :image, size: "240x180" %></div>
+        <div class = "col-6">
+          <h4 class ="mb-2"><%= item.name %></h4>
+          <table class = "table table-borderless">
+            <tr>
+              <th>原菜:</th>
+              <td><%= item.material.name %></td>
+            </tr>
+            <tr>
+              <th>内容:</th>
+              <td><%= item.capacity %></td>
+            </tr>
+            <tr>
+              <th>価格:</th>
+              <td><%= item.price %>円<small>（税込<%= item.with_tax_price %>円）</small></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td><%= link_to "詳細へ", item_path(item), class: "btn btn-primary" %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
