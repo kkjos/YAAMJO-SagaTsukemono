@@ -1,6 +1,7 @@
 class Admin::ItemsController < ApplicationController
   def index
     @items = Item.all
+    @materials = Material.all
   end
 
   def show
@@ -33,6 +34,12 @@ class Admin::ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def search
+    @materials = Material.all
+    @material = Material.find(params[:id])
+    @items = Item.where(material_id: @material.id)
   end
 
   private

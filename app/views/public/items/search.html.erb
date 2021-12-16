@@ -1,5 +1,5 @@
 <div class = "container">
-  <h3 class = "title my-3">全ての商品<small class = "text-muted">（全<%= @items.count %>件）</small></h3>
+  <h3 class = "title my-3"><%= @material.name %>のお漬物<small class = "text-muted">（全<%= @items.count %>件）</small></h3>
   <div class = "border-bottom d-flex flex-wrap">
     <small>原菜別で見る</small>
     <% @materials.each do |material| %>
