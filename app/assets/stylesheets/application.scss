@@ -27,6 +27,12 @@
 body{
   padding-bottom: 120px;
 }
+header,footer{
+  background-image:url(header_footer.png);
+  background-size: cover;
+  width: 100%;
+}
+
 .bxslider li {
   display: none;
 }
