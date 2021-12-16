@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => 'homes#about'
     get '/inquiry' => 'homes#inquiry'
+    get '/items/search' => 'items#search'
     resources :items, only: [:index, :show]
     resources :customers, only: [] do
       collection do
@@ -38,6 +39,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
+    get '/items/search' => 'items#search'
     resources :items, except: [:destroy]
     resources :customers, except: [:new, :create, :destroy]
     resources :orders, only: [:show, :update]
