@@ -12,7 +12,7 @@
       </tr>
       <% @item_total = 0 %>
       <% @cart_items.each do |cart_item| %>
-        <tr>
+        <tr class = "bg-white">
           <td><%= cart_item.item.name %></td>
           <td><%= cart_item.with_tax_price %></td>
           <td><%= cart_item.amount %></td>
@@ -24,7 +24,7 @@
   </div>
   <div class = "row">
     <div class = "col-6">
-      <table class = "table table-borderd mt-5">
+      <table class = "table table-borderd mt-5 bg-white">
         <tr>
           <th>支払い方法</th>
           <td><%= @order.payment_method_i18n %></td>

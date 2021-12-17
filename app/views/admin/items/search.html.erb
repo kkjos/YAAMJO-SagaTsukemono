@@ -22,7 +22,7 @@
         <th class = "col-2 text-center"></th>
       </tr>
       <% @items.each do |item| %>
-        <tr>
+        <tr class = "bg-white">
           <td class = "text-center"><%= item.name %></td>
           <td class = "text-center"><%= item.price %>円<small>(<%= item.with_tax_price %>円)</small></td>
           <% if item.is_active %>
@@ -34,5 +34,8 @@
         </tr>
       <% end %>
     </table>
+    <div>
+    <%= paginate @items %>
+    </div>
   </div>
 </div>
