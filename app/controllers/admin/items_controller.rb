@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.all.page(params[:page])
     @materials = Material.all
   end
 
@@ -39,7 +39,7 @@ class Admin::ItemsController < ApplicationController
   def search
     @materials = Material.all
     @material = Material.find(params[:id])
-    @items = Item.where(material_id: @material.id)
+    @items = Item.where(material_id: @material.id).page(params[:page])
   end
 
   private

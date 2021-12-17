@@ -16,7 +16,7 @@
           </tr>
           <% @cart_items.each do |cart_item| %>
             <%= form_with model:cart_item, local:true do |f| %>
-            <tr>
+            <tr class = "bg-white">
               <td class = "text-center"><%= attachment_image_tag cart_item.item, :image, :fill, 40, 40 %></td>
               <td class = "text-center"><%= cart_item.item.name %></td>
               <td class = "text-center"><%= cart_item.item.with_tax_price %></td>
@@ -34,7 +34,7 @@
     </div>
     <div class = "row">
       <div class =  "col-6 offset-6 mt-2">
-        <table class = "table">
+        <table class = "table bg-white">
           <tr>
             <th>商品合計数量</th>
             <td><%= @cart_items.sum(:amount) %>点</td>
