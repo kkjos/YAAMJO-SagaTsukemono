@@ -1,6 +1,6 @@
 <%= form_with model:address, url:addresses_path, local:true do |f| %>
   <%= f.hidden_field :customer_id, value:current_customer.id %>
-  <table class = "table table-borderless border">
+  <table class = "table table-borderless border bg-white">
     <tr>
       <th><%= f.label :name, "宛先名" %></th>
       <td><%= f.text_field :name, class:"form-control" %></td>

@@ -41,6 +41,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     if @order.save
+      Address.create(customer_id: @order.customer_id, name: @order.name, postal_code: @order.postal_code, address: @order.address)
       @cart_items.each do |cart_item|
       OrderDetail.create(order_id: @order.id, item_id: cart_item.item_id, amount: cart_item.amount, price: cart_item.with_tax_price)
       end
@@ -65,4 +66,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:postal_code, :address, :name, :payment_method, :shipping_cost, :total_payment)
   end
+  
 end

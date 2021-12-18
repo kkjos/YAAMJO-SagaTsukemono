@@ -1,6 +1,6 @@
 <div class = "container">
   <div class = "row">
-    <h3 class = "title mt-5">宛先一覧</h3>
+    <h3 class = "title">宛先一覧</h3>
   </div>
   <div>
     <table class = "table table-bordered">
@@ -12,7 +12,7 @@
         <th class = "col-2 text-center"></th>
       </tr>
       <% @addresses.each do |address| %>
-      <tr>
+      <tr class = "bg-white">
         <td class = "text-center"><%= address.name %></td>
         <td class = "text-center"><%= address.postal_code %></td>
         <td class = "text-center"><%= address.address %></td>
