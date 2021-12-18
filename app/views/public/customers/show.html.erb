@@ -1,8 +1,9 @@
 <div class = "container">
   <div class = "row">
     <h3 class = "title">マイページ</h3>
-    <div>
-      <%= link_to "お届け先一覧・追加する", addresses_path %>
+    <div >
+      <%= link_to "お届け先一覧", addresses_path, class: "btn btn-info ml-5" %>
+      <%= link_to "注文履歴", orders_path, class: "btn btn-info ml-5" %>
     </div>
   </div>
   <div class = "row">
