@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     get '/items/search' => 'items#search'
     resources :items, except: [:destroy]
     resources :customers, except: [:new, :create, :destroy]
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
     resources :materials, except: [:new, :show, :destroy]
   end
