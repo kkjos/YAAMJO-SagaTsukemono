@@ -1,15 +1,16 @@
 <div class = "container">
+  <h3 class = row>未完了の注文一覧<small class = "ml-2 mt-2">全<%= @orders.where.not(status: 2).count %>件</small></h3>
   <div class = "row">
-    <div class = "col-5">
-      <h3>未発送の注文一覧<small class = "ml-2">全<%= @orders.where.not(status: 2).count %>件</small></h3>
+    <div class = "col-6">
       <table class = "table">
+        <h4>作成中一覧<small class = "ml-2"><%= @orders.where(status: 1).count %>件</small></h4>
         <tr class="active" style="background-color:rgba(213,219,219,0.50);">
           <th class = "col-1 text-center">注文日時</th>
           <th class = "col-2 text-center">注文者</th>
           <th class = "col-1 text-center">点数</th>
           <th class = "col-1"></th>
         </tr>
-        <% @orders.where.not(status: 2).each do |order| %>
+        <% @orders.where(status: 1).each do |order| %>
           <tr class = " bg-white">
             <td class = "text-center"><%= order.created_at.strftime('%Y/%m/%d') %></td>
             <td class = "text-center"><%= order.customer.last_name %><%= order.customer.first_name %></td>
@@ -19,9 +20,9 @@
         <% end %>
       </table>
     </div>
-    <div class = "col-6 offset-1">
-      <h3>未入金者一覧<small class = "ml-2">全<%= @orders.where(status: 0).count %>件</small></h3>
+    <div class = "col-6">
       <table class = "table">
+        <h4>未入金者一覧<small class = "ml-2"><%= @orders.where(status: 0).count %>件</small></h4>
         <tr class="active" style="background-color:rgba(213,219,219,0.50);">
           <th class = "col-1 text-center">注文日時</th>
           <th class = "col-2 text-center">注文者</th>

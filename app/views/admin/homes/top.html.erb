@@ -20,7 +20,7 @@
     <div class = "col-6">
       <table class = "table">
         <tr>
-          <th>未発送の注文件数</th>
+          <th>未完了の注文件数</th>
           <td><%= @orders.where.not(status: 2).count %>件</td>
         </tr>
         <tr>
@@ -29,12 +29,15 @@
         </tr>
         <tr>
           <th></th>
-          <td><%= link_to "未発送・未入金一覧へ", admin_information_path, class: "btn btn-info btn-lg" %></td>
+          <td><%= link_to "未完了の注文一覧へ", admin_information_path, class: "btn btn-info btn-lg" %></td>
         </tr>
       </table>
     </div>
   </div>
-  <h5 class = "mt-5">過去１ヶ月の通販営業情報</h5>
+  <div class = "row">
+    <h5 class = "mt-5 col-6">直近１ヶ月の通販営業情報</h5>
+    <h5 class = "mt-5 col-6">直近１ヶ月の売り上げグラフ</h5>
+  </div>
   <div class = "row">
     <div class = "col-6">
       <table class = "table bg-white">
@@ -52,7 +55,7 @@
         </tr>
         <tr>
           <th></th>
-          <td><%= link_to "過去の売り上げ", admin_report_path %></td>
+          <td><%= link_to "過去の売り上げ", admin_report_path, class: "btn btn-info btn-lg" %></td>
         </tr>
       </table>
     </div>
