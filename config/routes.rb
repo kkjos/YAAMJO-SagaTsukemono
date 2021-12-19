@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
+    get '/homes/information' => 'homes#information'
     get '/items/search' => 'items#search'
     resources :items, except: [:destroy]
     resources :customers, except: [:new, :create, :destroy]

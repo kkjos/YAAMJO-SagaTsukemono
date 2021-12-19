@@ -1,19 +1,19 @@
 <div class = "container">
   <h3>本日の通販営業情報</h3>
-  <div class = "row">
+  <div class = "row bg-white">
     <div class = "col-6">
       <table class = "table">
         <tr>
           <th>本日の注文件数</th>
-          <td><%= @today_orders.count %>件</td>
+          <td><%= @orders.where(created_at: Time.zone.today.all_day).count %>件</td>
         </tr>
         <tr>
           <th>本日の注文数量</th>
-          <td><%= @today_order_details.sum(:amount) %>点</td>
+          <td><%= @order_details.where(created_at: Time.zone.today.all_day).sum(:amount) %>点</td>
         </tr>
         <tr>
           <th>本日の売上額（税込）<small>※送料抜</small></th>
-          <td><%= @today_orders.sum(:total_payment) %>円</td>
+          <td><%= @orders.where(created_at: Time.zone.today.all_day).sum(:total_payment) %>円</td>
         </tr>
       </table>
     </div>
@@ -21,39 +21,39 @@
       <table class = "table">
         <tr>
           <th>未発送の注文件数</th>
-          <td><%= @undispatched_orders.count %>件</td>
+          <td><%= @orders.where.not(status: 2).count %>件</td>
         </tr>
         <tr>
           <th>入金待ち件数</th>
-          <td><%= @waiting_for_deposit_order.count %>件</td>
+          <td><%= @orders.where(status: 0).count %>件</td>
         </tr>
         <tr>
-          <th>詳細へ</th>
-          <td></td>
+          <th></th>
+          <td><%= link_to "未発送・未入金一覧へ", admin_homes_information_path, class: "btn btn-info btn-lg" %></td>
         </tr>
       </table>
     </div>
   </div>
-  <h4>過去１ヶ月の通販営業情報</h4>
+  <h5 class = "mt-5">過去１ヶ月の通販営業情報</h5>
   <div class = "row">
     <div class = "col-6">
-      <table class = "table">
+      <table class = "table bg-white">
         <tr>
           <th>1ヶ月の注文件数</th>
-          <td><%= @month_orders.count %>件</td>
+          <td><%= @orders.where(created_at: Time.zone.today.all_month).count %>件</td>
         </tr>
         <tr>
           <th>1ヶ月の注文数量</th>
-          <td><%= @month_order_details.sum(:amount) %>点</td>
+          <td><%= @order_details.where(created_at: Time.zone.today.all_month).sum(:amount) %>点</td>
         </tr>
         <tr>
           <th>1ヶ月の売上額（税込）<small>※送料抜</small></th>
-          <td><%= @month_orders.sum(:total_payment) %>円</td>
+          <td><%= @orders.where(created_at: Time.zone.today.all_month).sum(:total_payment) %>円</td>
         </tr>
       </table>
     </div>
-    <div class = "col-6">
-      グラフ
+    <div class = "col-6 bg-white">
+      <%= column_chart @orders.group_by_day(:created_at, last: 30).sum(:total_payment), xtitle: "日付", ytitle: "円"%>
     </div>
   </div>
 </div>
