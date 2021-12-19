@@ -1,0 +1,59 @@
+<div class = "container">
+  <h3>本日の通販営業情報</h3>
+  <div class = "row">
+    <div class = "col-6">
+      <table class = "table">
+        <tr>
+          <th>本日の注文件数</th>
+          <td><%= @today_orders.count %>件</td>
+        </tr>
+        <tr>
+          <th>本日の注文数量</th>
+          <td><%= @today_order_details.sum(:amount) %>点</td>
+        </tr>
+        <tr>
+          <th>本日の売上額（税込）<small>※送料抜</small></th>
+          <td><%= @today_orders.sum(:total_payment) %>円</td>
+        </tr>
+      </table>
+    </div>
+    <div class = "col-6">
+      <table class = "table">
+        <tr>
+          <th>未発送の注文件数</th>
+          <td><%= @undispatched_orders.count %>件</td>
+        </tr>
+        <tr>
+          <th>入金待ち件数</th>
+          <td><%= @waiting_for_deposit_order.count %>件</td>
+        </tr>
+        <tr>
+          <th>詳細へ</th>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <h4>過去１ヶ月の通販営業情報</h4>
+  <div class = "row">
+    <div class = "col-6">
+      <table class = "table">
+        <tr>
+          <th>1ヶ月の注文件数</th>
+          <td><%= @month_orders.count %>件</td>
+        </tr>
+        <tr>
+          <th>1ヶ月の注文数量</th>
+          <td><%= @month_order_details.sum(:amount) %>点</td>
+        </tr>
+        <tr>
+          <th>1ヶ月の売上額（税込）<small>※送料抜</small></th>
+          <td><%= @month_orders.sum(:total_payment) %>円</td>
+        </tr>
+      </table>
+    </div>
+    <div class = "col-6">
+      グラフ
+    </div>
+  </div>
+</div>
