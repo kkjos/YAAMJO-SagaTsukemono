@@ -29,7 +29,7 @@
         </tr>
         <tr>
           <th></th>
-          <td><%= link_to "未発送・未入金一覧へ", admin_homes_information_path, class: "btn btn-info btn-lg" %></td>
+          <td><%= link_to "未発送・未入金一覧へ", admin_information_path, class: "btn btn-info btn-lg" %></td>
         </tr>
       </table>
     </div>
@@ -49,6 +49,10 @@
         <tr>
           <th>1ヶ月の売上額（税込）<small>※送料抜</small></th>
           <td><%= @orders.where(created_at: Time.zone.today.all_month).sum(:total_payment) %>円</td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= link_to "過去の売り上げ", admin_report_path %></td>
         </tr>
       </table>
     </div>
