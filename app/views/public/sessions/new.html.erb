@@ -9,11 +9,11 @@
       <table class = "table table-borderless">
         <tr class = "field">
           <th><%= f.label :email, "メールアドレス" %></th>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %></td>
+          <td><%= f.email_field :email, autofocus: true, class:"form-control" %></td>
         </tr>
         <tr class = "field">
           <th><%= f.label :password, "パスワード" %></th>
-          <td><%= f.password_field :password, autocomplete: "current-password", class:"form-control" %></td>
+          <td><%= f.password_field :password, class:"form-control" %></td>
         </tr>
         <tr class = "actions">
           <th></th>

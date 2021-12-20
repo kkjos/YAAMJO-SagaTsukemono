@@ -12,7 +12,7 @@
           </tr>
           <tr class = "field">
             <th><%= f.label :name, "商品名" %></th>
-            <td><%= f.text_field :name,autocomplete: "商品名",class: "form-control" %></td>
+            <td><%= f.text_field :name, placeholder: "柚子香香　◯◯◯", class: "form-control" %></td>
           </tr>
           <tr class = "field">
             <th>原菜</th>
@@ -22,15 +22,15 @@
       </div>
           <tr class = "field">
             <th><%= f.label :introduction, "商品説明" %></th>
-            <td><%= f.text_area :introduction, rows:"5", autocomplete: "商品説明",class: "form-control" %></td>
+            <td><%= f.text_area :introduction, placeholder: "◯月〜◯月　商品説明", rows:"5",class: "form-control" %></td>
           </tr>
           <tr class = "field">
             <th><%= f.label :capacity, "内容量" %></th>
-            <td><%= f.text_field :capacity,autocomplete: "内容量",class: "form-control" %></td>
+            <td><%= f.text_field :capacity, placeholder: "◯◯◯g　◯個",class: "form-control" %></td>
           </tr>
           <tr class = "field">
-            <th><%= f.label :price, "税抜き価格" %></th>
-            <td><%= f.text_field :price, autocomplete: "価格",class: "form-control" %></td>
+            <th><%= f.label :price, "税抜価格" %></th>
+            <td><%= f.text_field :price, placeholder: "◯◯◯　※税抜",class: "form-control" %></td>
           </tr>
           <tr class = "field">
             <th><%= f.label :is_active, "販売ステータス" %></th>
@@ -45,7 +45,7 @@
               </div>
             </td>
           </tr>
-          <tr class = "actions">
+          <tr>
             <th></th>
             <td><%= f.submit "登録する", class: "btn btn-success" %></td>
             <td><%= link_to "商品詳細に戻る", admin_item_path(@item), class: "btn btn-info" %></td>
