@@ -10,22 +10,22 @@
         <tr class = "field">
           <th>
             <%= f.label :name, "名前" %>
-            <small class = "text-secondary"><%= f.label :last_name, "(姓)" %><%= f.label :first_name, "(名)" %></small>
+            <small class = "text-secondary">(姓)(名)</small>
           </th>
-          <td><%= f.text_field :last_name, class:"form-control" %></td>
+          <td><%= f.text_field :last_name, autofocus: true, class:"form-control" %></td>
           <td><%= f.text_field :first_name, class:"form-control" %></td>
         </tr>
         <tr class = "field">
           <th>
             <%= f.label :name_kana, "カナ" %>
-            <small class = "text-secondary"><%= f.label :last_name_kana, "(セイ)" %><%= f.label :first_name_kana, "(メイ)" %></small>
+            <small class = "text-secondary">(セイ)(メイ)</small>
           </th>
           <td><%= f.text_field :last_name_kana, class:"form-control" %></td>
           <td><%= f.text_field :first_name_kana, class:"form-control" %></td>
         </tr>
         <tr class = "field">
           <th><%= f.label :email, "メールアドレス" %></th>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %></td>
+          <td><%= f.email_field :email, class:"form-control" %></td>
           <td></td>
         </tr>
         <tr class = "field">
@@ -33,7 +33,10 @@
           <td><%= f.text_field :postal_code, class:"form-control" %></td>
         </tr>
         <tr class = "field">
-          <th><%= f.label :address, "住所" %></th>
+          <th>
+            <%= f.label :address, "住所" %>
+            <small class = "text-secondary">(マンション名含む)</small>
+          </th>
           <td><%= f.text_field :address, class:"form-control" %></td>
         </tr>
         <tr class = "field">
@@ -49,13 +52,13 @@
               <% end %>
             </small>
           </th>
-          <td><%= f.password_field :password, autocomplete: "new-password", class:"form-control" %></td>
+          <td><%= f.password_field :password, class:"form-control" %></td>
         </tr>
-        <tr class = "field">
+        <tr>
           <th><%= f.label :password_confirmation, "パスワード確認" %></th>
-          <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %></td>
+          <td><%= f.password_field :password_confirmation, class:"form-control" %></td>
         </tr>
-        <tr class = "action">
+        <tr>
           <th></th>
           <td><%= f.submit "登録", class:"btn btn-success" %></td>
         </tr>
