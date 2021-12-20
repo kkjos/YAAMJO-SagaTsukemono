@@ -10,7 +10,7 @@ class Public::AddressesController < ApplicationController
       flash[:notice] = 'お届け先を追加しました。'
       redirect_to request.referer
     else
-      @addresses = Address.where(customer_id: current_customer.id)
+      @addresses = Address.where(customer_id: current_customer.id).page(params[:page])
       render :index
     end
   end

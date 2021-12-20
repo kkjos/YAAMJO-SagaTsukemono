@@ -2,6 +2,8 @@ ja:
   activerecord:
     models:
       customer: 会員
+      address: 配送先
+      item: 商品
     attributes:
       customer:
         last_name: （性）
@@ -14,3 +16,13 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
+      address:
+        postal_code: 郵便番号
+        address: 住所
+        name: 宛先名
+      item:
+        image: 写真
+        name: 商品名
+        introduction: 商品説明文
+        capacity: 内容量
+        price: 税抜き価格

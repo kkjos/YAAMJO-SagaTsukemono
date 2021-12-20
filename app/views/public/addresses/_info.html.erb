@@ -1,4 +1,5 @@
 <%= form_with model:address, url:addresses_path, local:true do |f| %>
+  <%= render 'layouts/error_messages', resource: f.object %>
   <%= f.hidden_field :customer_id, value:current_customer.id %>
   <table class = "table table-borderless border bg-white">
     <tr>

@@ -1,11 +1,11 @@
 <div class = "container">
   <div class = "row mt-5">
     <h3 class = "title">新規会員登録</h3>
-    <%= render "public/shared/error_messages", resource: resource %>
   </div>
   <div class = "row">
     <div class = "col-8 offset-2">
       <%= form_for(resource, as: resource_name, url:customer_registration_path) do |f| %>
+      <%= render 'layouts/error_messages', resource: f.object %>
       <table class = "table table-borderless">
         <tr class = "field">
           <th>

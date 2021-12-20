@@ -4,7 +4,8 @@
   </div>
   <div class = "row">
     <div class = "col-8 offset-2">
-      <%= form_with model:@item, url:admin_item_path do |f| %>
+      <%= form_with model:@item, url:admin_item_path, local:true do |f| %>
+      <%= render 'layouts/error_messages', resource: f.object %>
         <table class = "table table-borderless">
           <tr class = "field">
             <th><%= f.label :image, "画像" %></th>
