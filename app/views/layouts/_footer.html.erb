@@ -1,21 +1,20 @@
-<footer class = "footer mt-5 fixed-bottom">
-  <div class = "container">
-    <div class = "row">
-      <div class = "col-6">
-        <h3>嵯峨漬物やまじょう</h3>
-        <h5>
-          〒京都市右京区嵯峨釈迦堂門前瀬戸川町１４番地<br>
-          TEL・FAX：075-871-4457
-        </h5>
-      </div>
-      <div class = "col-6">
-        <p class = "copyright mt-3">Copyright© Saga Tsukemono Yamajo. All Rights Reserved</p>
-        <% if admin_signed_in? %>
-          <%= link_to "トップへ戻る",admin_root_path, class: "text-dark border-bottom" %>
-        <% else %>
+<% if admin_signed_in? %>
+<% else %>
+  <footer class = "footer mt-5 fixed-bottom">
+    <div class = "container">
+      <div class = "row">
+        <div class = "col-6">
+          <h3>嵯峨漬物やまじょう</h3>
+          <h5>
+            〒京都市右京区嵯峨釈迦堂門前瀬戸川町１４番地<br>
+            TEL・FAX：075-871-4457
+          </h5>
+        </div>
+        <div class = "col-6">
+          <p class = "copyright mt-3">Copyright© Saga Tsukemono Yamajo. All Rights Reserved</p>
           <%= link_to "トップへ戻る",root_path, class: "text-dark border-bottom" %>
-        <% end %>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
+  </footer>
+<% end %>
