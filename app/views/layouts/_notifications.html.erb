@@ -1,5 +1,5 @@
 <div class = "container">
-  <div class = "massage mt-5 text-success">
+  <div class = "massage mt-5">
     <% flash.each do |key, value| %>
       <h5><%= content_tag(:div, value, class: key) %></h5>
     <% end %>

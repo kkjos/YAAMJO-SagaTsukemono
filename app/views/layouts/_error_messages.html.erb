@@ -1,0 +1,12 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation">
+    <div class = "bg-danger text-white">
+      <h4>エラーが発生しました。以下ご確認の上再度お試しください。</h4>
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li class = "ml-5"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

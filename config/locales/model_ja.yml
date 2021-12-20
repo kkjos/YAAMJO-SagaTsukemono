@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       customer: 会員
+      address: 配送先
     attributes:
       customer:
         last_name: （性）
@@ -14,3 +15,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
+      address:
+        postal_code: 郵便番号
+        address: 住所
+        name: 宛先名
