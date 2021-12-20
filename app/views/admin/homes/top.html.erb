@@ -5,15 +5,18 @@
       <table class = "table">
         <tr>
           <th>本日の注文件数</th>
-          <td><%= @orders.where(created_at: Time.zone.today.all_day).count %>件</td>
+          <td><%= @today_orders.count %>件</td>
         </tr>
         <tr>
           <th>本日の注文数量</th>
-          <td><%= @order_details.where(created_at: Time.zone.today.all_day).sum(:amount) %>点</td>
+          <td><%= @today_order_details.sum(:amount) %>点</td>
         </tr>
         <tr>
-          <th>本日の売上額（税込）<small>※送料抜</small></th>
-          <td><%= @orders.where(created_at: Time.zone.today.all_day).sum(:total_payment) %>円</td>
+          <th>本日の売上額（税込）<small>※送料込</small></th>
+          <td>
+            <%= @today_orders.sum(:total_payment) %>円
+            <small>(うち送料<%= @today_orders.sum(:shipping_cost) %>円)</small>
+          </td>
         </tr>
       </table>
     </div>
@@ -43,15 +46,18 @@
       <table class = "table bg-white">
         <tr>
           <th>1ヶ月の注文件数</th>
-          <td><%= @orders.where(created_at: Time.zone.today.all_month).count %>件</td>
+          <td><%= @for30day_orders.count %>件</td>
         </tr>
         <tr>
           <th>1ヶ月の注文数量</th>
-          <td><%= @order_details.where(created_at: Time.zone.today.all_month).sum(:amount) %>点</td>
+          <td><%= @for30day_order_details.sum(:amount) %>点</td>
         </tr>
         <tr>
-          <th>1ヶ月の売上額（税込）<small>※送料抜</small></th>
-          <td><%= @orders.where(created_at: Time.zone.today.all_month).sum(:total_payment) %>円</td>
+          <th>1ヶ月の売上額（税込）<small>※送料込</small></th>
+          <td>
+            <%= @for30day_orders.sum(:total_payment) %>円
+            <small>(うち送料<%= @for30day_orders.sum(:shipping_cost) %>円)</small>
+          </td>
         </tr>
         <tr>
           <th></th>

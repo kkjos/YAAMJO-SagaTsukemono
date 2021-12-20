@@ -12,8 +12,11 @@
           <td><%= @month_order_details.sum(:amount) %>個</td>
         </tr>
         <tr>
-          <th>通販売上額</th>
-          <td><%= @month_orders.sum(:total_payment) %>円</td>
+          <th>通販売上額<small>※送料込</small></th>
+          <td>
+            <%= @month_orders.sum(:total_payment) %>円
+            <small>(うち送料<%= @month_orders.sum(:shipping_cost) %>円)</small>
+          </td>
         </tr>
         <tr>
           <td><%= link_to "前月を見る",admin_report_path(month:@month.prev_month), class: "btn btn-primary" %></td>
@@ -38,8 +41,11 @@
           <td><%= @year_order_details.sum(:amount) %>個</td>
         </tr>
         <tr>
-          <th>通販売上額</th>
-          <td><%= @year_orders.sum(:total_payment) %>円</td>
+          <th>通販売上額<small>※送料込</small></th>
+          <td>
+            <%= @year_orders.sum(:total_payment) %>円
+            <small>(うち送料<%= @year_orders.sum(:shipping_cost) %>円)</small>
+          </td>
         </tr>
         <tr>
           <td><%= link_to "前年を見る",admin_report_path(year:@year.prev_year), class: "btn btn-primary" %></td>
