@@ -1,12 +1,12 @@
 <div class = "container">
   <div class = "row">
-    <h3 class = "title mt-5">注文情報入力<br>
+    <h3>注文情報入力<br>
       <small class = "ml-2">①で支払い方法指定後、②でお届け先を選んでください。</small>
     </h3>
   </div>
   <%= form_with model:@order, url:confirm_orders_path, local:true do |f| %>
   <div class = "row mt-3">
-    <div class = "form col-6 border bg-white">
+    <div class = "form col-lg-6 bg-white">
       <h4>①支払い方法</h4>
       <div class = "form-check">
         <%= f.radio_button :payment_method, Order.payment_methods.key(0), checked: "checked" %>
@@ -17,7 +17,7 @@
         <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
       </div>
     </div>
-    <div class = "form col-6 border bg-white">
+    <div class = "form col-lg-6 bg-white">
       <h4>②お届け先</h4>
       <div class = "form-check">
         <%= f.radio_button :address_option, 0, checked: "checked" %>
