@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :ensure_cart_item, except: [:index, :show]
+  before_action :ensure_cart_item, except: [:index, :show, :complete]
   def new
     @order = Order.new
   end

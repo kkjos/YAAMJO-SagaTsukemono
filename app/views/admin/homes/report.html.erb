@@ -1,11 +1,11 @@
 <div class = "container">
   <div class = "row bg-white">
-    <div class = "col-4">
+    <div class = "col-lg-4">
       <h3><%= @month.strftime('%Y年%m月') %>のデータ</h3>
       <table class = "table table-borderless">
         <tr>
-          <th>注文件数</th>
-          <td><%= @month_orders.count %>件</td>
+          <th class = "col-6">注文件数</th>
+          <td class = "col-6"><%= @month_orders.count %>件</td>
         </tr>
         <tr>
           <th>通販注文個数</th>
@@ -24,17 +24,17 @@
         </tr>
       </table>
     </div>
-    <div class = "col-8">
+    <div class = "col-lg-8">
       <%= column_chart @month_orders.group_by_day_of_month(:created_at).sum(:total_payment), xtitle: "日付", ytitle: "円"%>
     </div>
   </div>
   <div class = "row bg-white mt-3">
-    <div class = "col-4">
+    <div class = "col-lg-4">
       <h3><%= @year.strftime('%Y年') %>のデータ</h3>
       <table class = "table table-borderless">
         <tr>
-          <th>注文件数</th>
-          <td><%= @year_orders.count %>件</td>
+          <th class = "col-6">注文件数</th>
+          <td class = "col-6"><%= @year_orders.count %>件</td>
         </tr>
         <tr>
           <th>通販注文個数</th>
@@ -53,7 +53,7 @@
         </tr>
       </table>
     </div>
-    <div class = "col-8">
+    <div class = "col-lg-8">
       <%= column_chart @year_orders.group_by_month_of_year(:created_at).sum(:total_payment), xtitle: "日付", ytitle: "円"%>
   </div>
 </div>

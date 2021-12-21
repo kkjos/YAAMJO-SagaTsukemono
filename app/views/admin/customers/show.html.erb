@@ -1,9 +1,9 @@
 <div class = "container">
   <div class = "row mt-5">
-    <h3 class = "title">会員詳細<small class = "ml-2"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報</small></h3>
+    <h3>会員詳細<small class = "ml-2"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報</small></h3>
   </div>
   <div class = "row">
-    <div class = "col-6">
+    <div class = "col-lg-6">
       <table class = "table table-borderless border bg-white">
         <tr>
           <th>会員番号</th>
@@ -43,7 +43,7 @@
         </tr>
       </table>
     </div>
-    <div class = "col-6">
+    <div class = "col-lg-6">
       <h5>注文履歴</h5>
       <% if @customer.orders.present? %>
       <table class = "table table-bordered">

@@ -1,19 +1,18 @@
 <div class = "container">
   <div class = "row mt-5">
-    <h3 class = "title col-8"><%= @material.name %>のお漬物</h3>
-    <div class = "col-4"><%= link_to "商品登録", new_admin_item_path, class: "btn btn-success btn-lg" %></div>
+    <h3 class = "col-8"><%= @material.name %>のお漬物</h3>
+    <div class = "col-4"><%= link_to "商品登録", new_admin_item_path, class: "btn btn-success" %></div>
   </div>
-  <div class = " row border-bottom d-flex flex-wrap">
+  <div class = "row border-bottom h5">
     <small>原菜別で見る</small>
     <% @materials.each do |material| %>
       <%= link_to admin_items_search_path(:id=> material.id) do %>
-        <div class = "mx-2 h5">
-          <%= material.name %>
-        </div>
+          <span class = "btn btn-secondary ml-1"><%= material.name %></span>
       <% end %>
     <% end %>
   </div>
-  <div class = "col-10 offset-1 mt-1">
+  <div class = "row">
+    <div class = "col-lg-10 mx-auto mt-1">
     <table class = "table table-bordered">
       <tr class="active" style="background-color:rgba(213,219,219,0.50);">
         <th class = "col-2 text-center">商品名</th>
