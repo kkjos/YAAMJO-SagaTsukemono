@@ -1,5 +1,7 @@
 class Admin::HomesController < ApplicationController
-
+  
+  before_action :authenticate_admin!
+  
   def top
     @orders = Order.all
     @today_orders = @orders.where(created_at: Time.zone.today.all_day)

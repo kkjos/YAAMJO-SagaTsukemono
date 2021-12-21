@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :ensure_cart_item, except: [:index, :show]
   def new
     @order = Order.new
   end
@@ -65,6 +67,12 @@ class Public::OrdersController < ApplicationController
   private
   def order_params
     params.require(:order).permit(:postal_code, :address, :name, :payment_method, :shipping_cost, :total_payment)
+  end
+
+  def ensure_cart_item
+    if current_customer.cart_items.blank?
+      redirect_to items_path
+    end
   end
 
 end
