@@ -1,4 +1,7 @@
 class Admin::MaterialsController < ApplicationController
+  
+  before_action :authenticate_admin!
+  
   def index
     @material = Material.new
     @materials = Material.all
