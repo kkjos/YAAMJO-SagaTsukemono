@@ -1,14 +1,14 @@
 class Admin::CustomersController < ApplicationController
-  
+
   before_action :authenticate_admin!
-  
+
   def index
-    @customers = Customer.all.page(params[:page])
+    @customers = Customer.all.page(params[:page]).order(id: "DESC")
   end
 
   def show
     @customer = Customer.find(params[:id])
-    @orders = Order.where(customer_id: @customer.id)
+    @orders = Order.where(customer_id: @customer.id).order(id: "DESC")
   end
 
   def edit
