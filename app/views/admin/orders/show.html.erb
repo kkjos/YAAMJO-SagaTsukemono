@@ -73,6 +73,14 @@
           <th><%= @order.total_payment %>円</th>
         </tr>
       </table>
+      <div class = "bg-white" >
+        <% if @order.remark.blank? %>
+          <h5>備考欄に記入はありませんでした。</h5>
+        <% else %>
+          <h5 style="background-color:rgba(213,219,219,0.50);">備考欄にご記入いただいた内容</h5>
+          <%= @order.remark %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
