@@ -161,7 +161,7 @@ Order.create!(
       name: Faker::Name.name,
       shipping_cost: "800",
       total_payment: "1826",
-      created_at: "2021-11-30 08:09:33"
+      created_at: "2021-11-29 08:09:33"
     }
   ]
 )
@@ -172,14 +172,14 @@ OrderDetail.create!(
       item_id: "1",
       price: "500",
       amount: "1",
-      created_at: "2021-11-30 08:09:33",
+      created_at: "2021-11-29 08:09:33",
     },
     {
       order_id: "1",
       item_id: "2",
       price: "450",
       amount: "1",
-      created_at: "2021-11-30 08:09:33",
+      created_at: "2021-11-29 08:09:33",
     }
   ]
 )
@@ -193,7 +193,7 @@ Order.create!(
       name: Faker::Name.name,
       shipping_cost: "800",
       total_payment: "5444",
-      created_at: "2021-12-21 08:09:33"
+      created_at: "2021-12-16 08:09:33"
     }
   ]
 )
@@ -204,14 +204,14 @@ OrderDetail.create!(
       item_id: "3",
       price: "500",
       amount: "5",
-      created_at: "2021-12-21 08:09:33",
+      created_at: "2021-12-16 08:09:33",
     },
     {
       order_id: "2",
       item_id: "4",
       price: "450",
       amount: "4",
-      created_at: "2021-12-21 08:09:33",
+      created_at: "2021-12-16 08:09:33",
     }
   ]
 )
@@ -225,7 +225,7 @@ Order.create!(
       name: Faker::Name.name,
       shipping_cost: "800",
       total_payment: "4256",
-      created_at: "2021-12-22 08:09:33"
+      created_at: "2021-12-17 08:09:33"
     }
   ]
 )
@@ -236,14 +236,14 @@ OrderDetail.create!(
       item_id: "5",
       price: "400",
       amount: "3",
-      created_at: "2021-12-22 08:09:33",
+      created_at: "2021-12-17 08:09:33",
     },
     {
       order_id: "3",
       item_id: "6",
       price: "500",
       amount: "4",
-      created_at: "2021-12-22 08:09:33",
+      created_at: "2021-12-17 08:09:33",
     }
   ]
 )
@@ -257,7 +257,7 @@ Order.create!(
       name: Faker::Name.name,
       shipping_cost: "800",
       total_payment: "5228",
-      created_at: "2021-12-23 08:09:33"
+      created_at: "2021-12-18 08:09:33"
     }
   ]
 )
@@ -268,14 +268,14 @@ OrderDetail.create!(
       item_id: "7",
       price: "700",
       amount: "3",
-      created_at: "2021-12-23 08:09:33",
+      created_at: "2021-12-18 08:09:33",
     },
     {
       order_id: "4",
       item_id: "8",
       price: "500",
       amount: "4",
-      created_at: "2021-12-23 08:09:33",
+      created_at: "2021-12-18 08:09:33",
     }
   ]
 )
@@ -289,7 +289,7 @@ Order.create!(
       name: Faker::Name.name,
       shipping_cost: "800",
       total_payment: "6200",
-      created_at: "2021-12-23 08:09:33"
+      created_at: "2021-12-18 08:09:33"
     }
   ]
 )
@@ -300,14 +300,14 @@ OrderDetail.create!(
       item_id: "9",
       price: "600",
       amount: "5",
-      created_at: "2021-12-23 08:09:33",
+      created_at: "2021-12-18 08:09:33",
     },
     {
       order_id: "5",
       item_id: "10",
       price: "500",
       amount: "4",
-      created_at: "2021-12-23 08:09:33",
+      created_at: "2021-12-18 08:09:33",
     }
   ]
 )
@@ -321,7 +321,7 @@ Order.create!(
       name: Faker::Name.name,
       shipping_cost: "800",
       total_payment: "1826",
-      created_at: "2021-12-24 08:09:33"
+      created_at: "2021-12-19 08:09:33"
     }
   ]
 )
@@ -332,14 +332,14 @@ OrderDetail.create!(
       item_id: "1",
       price: "500",
       amount: "1",
-      created_at: "2021-12-24 08:09:33",
+      created_at: "2021-12-19 08:09:33",
     },
     {
       order_id: "6",
       item_id: "2",
       price: "450",
       amount: "1",
-      created_at: "2021-12-24 08:09:33",
+      created_at: "2021-12-19 08:09:33",
     }
   ]
 )
@@ -353,7 +353,7 @@ Order.create!(
       name: Faker::Name.name,
       shipping_cost: "800",
       total_payment: "5444",
-      created_at: "2021-12-25 08:09:33"
+      created_at: "2021-12-19 08:09:33"
     }
   ]
 )
@@ -364,14 +364,14 @@ OrderDetail.create!(
       item_id: "3",
       price: "500",
       amount: "5",
-      created_at: "2021-12-25 08:09:33",
+      created_at: "2021-12-20 08:09:33",
     },
     {
       order_id: "7",
       item_id: "4",
       price: "450",
       amount: "4",
-      created_at: "2021-12-25 08:09:33",
+      created_at: "2021-12-20 08:09:33",
     }
   ]
 )
@@ -385,7 +385,7 @@ Order.create!(
       name: Faker::Name.name,
       shipping_cost: "800",
       total_payment: "4256",
-      created_at: "2021-12-26 08:09:33"
+      created_at: "2021-12-20 08:09:33"
     }
   ]
 )
@@ -396,14 +396,14 @@ OrderDetail.create!(
       item_id: "5",
       price: "400",
       amount: "3",
-      created_at: "2021-12-26 08:09:33",
+      created_at: "2021-12-20 08:09:33",
     },
     {
       order_id: "8",
       item_id: "6",
       price: "500",
       amount: "4",
-      created_at: "2021-12-26 08:09:33",
+      created_at: "2021-12-20 08:09:33",
     }
   ]
 )
@@ -417,7 +417,7 @@ Order.create!(
       name: Faker::Name.name,
       shipping_cost: "800",
       total_payment: "5228",
-      created_at: "2021-12-27 08:09:33"
+      created_at: "2021-12-21 08:09:33"
     }
   ]
 )
@@ -428,18 +428,18 @@ OrderDetail.create!(
       item_id: "7",
       price: "700",
       amount: "3",
-      created_at: "2021-12-27 08:09:33",
+      created_at: "2021-12-21 08:09:33",
     },
     {
       order_id: "9",
       item_id: "8",
       price: "500",
       amount: "4",
-      created_at: "2021-12-27 08:09:33",
+      created_at: "2021-12-21 08:09:33",
     }
   ]
 )
-#注文サンプル5
+#注文サンプル10
 Order.create!(
   [
     {
@@ -449,7 +449,7 @@ Order.create!(
       name: Faker::Name.name,
       shipping_cost: "800",
       total_payment: "6200",
-      created_at: "2021-12-28 08:09:33"
+      created_at: "2021-12-21 08:09:33"
     }
   ]
 )
@@ -460,14 +460,14 @@ OrderDetail.create!(
       item_id: "9",
       price: "600",
       amount: "5",
-      created_at: "2021-12-28 08:09:33",
+      created_at: "2021-12-21 08:09:33",
     },
     {
       order_id: "10",
       item_id: "10",
       price: "500",
       amount: "4",
-      created_at: "2021-12-28 08:09:33",
+      created_at: "2021-12-21 08:09:33",
     }
   ]
 )

@@ -1,14 +1,14 @@
 class Admin::HomesController < ApplicationController
-  
+
   before_action :authenticate_admin!
-  
+
   def top
     @orders = Order.all
     @today_orders = @orders.where(created_at: Time.zone.today.all_day)
-    @for30day_orders = @orders.where(created_at: Time.zone.today.all_month)
+    @for30day_orders = @orders.where(created_at: Time.zone.today.ago(30.days)..Time.zone.today.end_of_day)
     @order_details = OrderDetail.all
     @today_order_details = @order_details.where(created_at: Time.zone.today.all_day)
-    @for30day_order_details = @order_details.where(created_at: Time.zone.today.all_month)
+    @for30day_order_details = @order_details.where(created_at: Time.zone.today.ago(30.days)..Time.zone.today.end_of_day)
   end
 
   def information
