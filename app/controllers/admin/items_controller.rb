@@ -1,9 +1,9 @@
 class Admin::ItemsController < ApplicationController
-  
+
   before_action :authenticate_admin!
-  
+
   def index
-    @items = Item.all.page(params[:page])
+    @items = Item.all.page(params[:page]).order(id: "DESC")
     @materials = Material.all
   end
 
@@ -42,7 +42,7 @@ class Admin::ItemsController < ApplicationController
   def search
     @materials = Material.all
     @material = Material.find(params[:id])
-    @items = Item.where(material_id: @material.id).page(params[:page])
+    @items = Item.where(material_id: @material.id).page(params[:page]).order(id: "DESC")
   end
 
   private
