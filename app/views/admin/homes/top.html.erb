@@ -1,11 +1,11 @@
 <div class = "container">
   <h3>本日の通販営業情報</h3>
   <div class = "row bg-white">
-    <div class = "col-6">
+    <div class = "col-lg-6 mx-auto">
       <table class = "table">
         <tr>
-          <th>本日の注文件数</th>
-          <td><%= @today_orders.count %>件</td>
+          <th class = "col-6">本日の注文件数</th>
+          <td class = "col-6"><%= @today_orders.count %>件</td>
         </tr>
         <tr>
           <th>本日の注文数量</th>
@@ -20,11 +20,11 @@
         </tr>
       </table>
     </div>
-    <div class = "col-6">
+    <div class = "col-lg-6 mx-auto">
       <table class = "table">
         <tr>
-          <th>未完了の注文件数</th>
-          <td><%= @orders.where.not(status: 2).count %>件</td>
+          <th class = "col-6">未完了の注文件数</th>
+          <td class = "col-6"><%= @orders.where.not(status: 2).count %>件</td>
         </tr>
         <tr>
           <th>入金待ち件数</th>
@@ -37,16 +37,13 @@
       </table>
     </div>
   </div>
-  <div class = "row">
-    <h5 class = "mt-5 col-6">直近１ヶ月の通販営業情報</h5>
-    <h5 class = "mt-5 col-6">直近１ヶ月の売り上げグラフ</h5>
-  </div>
-  <div class = "row">
-    <div class = "col-6">
+  <div class = "row mt-2">
+    <div class = "col-lg-6">
+      <h5>直近１ヶ月の通販営業情報</h5>
       <table class = "table bg-white">
         <tr>
-          <th>1ヶ月の注文件数</th>
-          <td><%= @for30day_orders.count %>件</td>
+          <th class = "col-6">1ヶ月の注文件数</th>
+          <td class = "col-6"><%= @for30day_orders.count %>件</td>
         </tr>
         <tr>
           <th>1ヶ月の注文数量</th>
@@ -65,8 +62,11 @@
         </tr>
       </table>
     </div>
-    <div class = "col-6 bg-white">
-      <%= column_chart @orders.group_by_day(:created_at, last: 30).sum(:total_payment), xtitle: "日付", ytitle: "円"%>
+    <div class = "col-lg-6">
+      <h5>直近１ヶ月の売り上げグラフ</h5>
+      <div class = "bg-white">
+        <%= column_chart @orders.group_by_day(:created_at, last: 30).sum(:total_payment), xtitle: "日付", ytitle: "円"%>
+      </div>
     </div>
   </div>
 </div>

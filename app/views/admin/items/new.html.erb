@@ -1,9 +1,9 @@
 <div class = "container">
   <div class = "row">
-    <h3 class = "title mt-5">商品登録</h3>
+    <h3>商品登録</h3>
   </div>
   <div class = "row">
-    <div class = "col-8 offset-2">
+    <div class = "col-lg-8 mx-auto">
       <%= form_with model:@item, url:admin_items_path, local:true do |f| %>
       <%= render 'layouts/error_messages', resource: f.object %>
         <table class = "table table-borderless">
