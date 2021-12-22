@@ -1,7 +1,5 @@
 <div class="container">
-  <div class="row">
-    <h3 class = "title mt-5">原菜編集</h3>
-  </div>
+  <h3>原菜編集</h3>
   <div class = "col-4 offset-4 mt-5">
     <%= form_with model:@material, url:admin_material_path(@material),local:true do |f| %>
     <%= render 'layouts/error_messages', resource: f.object %>

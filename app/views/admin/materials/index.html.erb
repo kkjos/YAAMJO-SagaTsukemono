@@ -1,9 +1,7 @@
 <div class="container">
-  <div class="row">
-    <h3 class = "title mt-5">原菜一覧・追加</h3>
-  </div>
+  <h3>原菜一覧・追加</h3>
   <div class = "row">
-    <div class = "col-6">
+    <div class = "col-lg-6">
       <%= form_with model:@material, url:admin_materials_path,local:true do |f| %>
       <%= render 'layouts/error_messages', resource: f.object %>
         <div class="form-group form-inline">
@@ -13,14 +11,14 @@
         <%= f.submit '新規登録', class: "btn btn-success" %>
       <% end %>
     </div>
-    <div class="col-6">
+    <div class="col-lg-6">
       <table class="table table-bordered">
-        <tr class="active" style="background-color:rgba(213,219,219,0.50);">
+        <tr style="background-color:rgba(213,219,219,0.50);">
           <th>原菜</th>
           <th></th>
         </tr>
         <% @materials.each do |material| %>
-          <tr>
+          <tr class = "bg-white">
             <td class = "col-4"><%= material.name %></td>
             <td class = "col-2">
               <%= link_to "編集する", edit_admin_material_path(material), class: "btn btn-success btn-sm" %>
