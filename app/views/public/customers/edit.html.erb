@@ -5,7 +5,7 @@
       <%= form_with model:@customer, url:customers_path, local:true do |f| %>
       <%= render 'layouts/error_messages', resource: f.object %>
       <table class = "table table-borderless">
-        <tr class = "field">
+        <tr>
           <th>
             <%= f.label :name, "名前" %>
             <small class = "text-secondary">(姓)(名)</small>
@@ -13,7 +13,7 @@
           <td><%= f.text_field :last_name, autofocus: true, class:"form-control" %></td>
           <td><%= f.text_field :first_name, class:"form-control" %></td>
         </tr>
-        <tr class = "field">
+        <tr>
           <th>
             <%= f.label :name_kana, "カナ" %>
             <small class = "text-secondary">(セイ)(メイ)</small>
@@ -21,27 +21,27 @@
           <td><%= f.text_field :last_name_kana, class:"form-control" %></td>
           <td><%= f.text_field :first_name_kana, class:"form-control" %></td>
         </tr>
-        <tr class = "field">
+        <tr>
           <th><%= f.label :email, "メールアドレス" %></th>
           <td><%= f.email_field :email, class:"form-control" %></td>
           <td></td>
         </tr>
-        <tr class = "field">
+        <tr>
           <th><%= f.label :postal_code, "郵便番号" %></th>
           <td><%= f.text_field :postal_code, class:"form-control" %></td>
         </tr>
-        <tr class = "field">
+        <tr>
           <th>
             <%= f.label :address, "住所" %>
             <small class = "text-secondary">(マンション名含む)</small>
           </th>
           <td><%= f.text_field :address, class:"form-control" %></td>
         </tr>
-        <tr class = "field">
+        <tr>
           <th><%= f.label :telephone_number, "電話番号" %></th>
           <td><%= f.text_field :telephone_number, class:"form-control" %></td>
         </tr>
-        <tr class = "action">
+        <tr>
           <th></th>
           <td><%= f.submit "変更する", class:"btn btn-success" %></td>
           <td><%= link_to "マイページに戻る",customers_path, class:"btn btn-primary" %></td>
