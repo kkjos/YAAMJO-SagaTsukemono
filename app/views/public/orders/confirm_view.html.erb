@@ -1,6 +1,6 @@
 <div class = "container">
   <div class = "row">
-    <h3 class = "title">注文確認画面</h3>
+    <h3>注文確認画面</h3>
   </div>
   <div class = "row">
     <div class = "col-lg-6 mx-auto">
@@ -21,20 +21,20 @@
   </div>
   <div class = "row">
     <div class = "col-lg-6">
-      <table class = "table table-bordered">
-        <tr class="active" style="background-color:rgba(213,219,219,0.50);">
-          <th class = "col-4 text-center">商品名</th>
-          <th class = "col-3 text-center">価格（税込）</th>
-          <th class = "col-2 text-center">数量</th>
-          <th class = "col-3 text-center">小計</th>
+      <table class = "table table-bordered text-center">
+        <tr style = "background-color:rgba(213,219,219,0.50);">
+          <th class = "col-4">商品名</th>
+          <th class = "col-3">価格（税込）</th>
+          <th class = "col-2">数量</th>
+          <th class = "col-3">小計</th>
         </tr>
         <% @item_total = 0 %>
         <% @cart_items.each do |cart_item| %>
           <tr class = "bg-white">
-            <td class = "text-center"><%= cart_item.item.name %></td>
-            <td class = "text-center"><%= cart_item.with_tax_price %>円</td>
-            <td class = "text-center"><%= cart_item.amount %></td>
-            <td class = "text-center"><%= cart_item.subtotal %>円</td>
+            <td><%= cart_item.item.name %></td>
+            <td><%= cart_item.with_tax_price %>円</td>
+            <td><%= cart_item.amount %></td>
+            <td><%= cart_item.subtotal %>円</td>
           </tr>
           <% @item_total += cart_item.subtotal %>
         <% end %>
