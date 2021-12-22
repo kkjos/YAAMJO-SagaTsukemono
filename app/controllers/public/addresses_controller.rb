@@ -1,6 +1,6 @@
 class Public::AddressesController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def index
     @address = Address.new
     # 使用している会員Idで特定のお届け先のみ受け取る
@@ -39,6 +39,7 @@ class Public::AddressesController < ApplicationController
   end
 
   private
+
   def address_params
     params.require(:address).permit(:customer_id, :name, :postal_code, :address)
   end

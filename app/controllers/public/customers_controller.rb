@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
+  
   def show
     # 使用している会員情報のみ受け取る
     @customer = current_customer
@@ -33,6 +34,7 @@ class Public::CustomersController < ApplicationController
   end
 
   private
+  
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number, :is_deleted)
   end

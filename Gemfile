@@ -63,17 +63,14 @@ group :test do
   gem "factory_bot_rails"
 end
 
-gem 'faker'
-gem 'gimei'
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pry-byebug'
 gem 'devise'
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
-gem "enum_help"
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile-mini_magick'
+gem 'enum_help'
 gem 'rails-i18n'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
@@ -83,5 +80,7 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
-gem "chartkick"
-gem "groupdate"
+gem 'chartkick'
+gem 'groupdate'
+gem 'faker'
+gem 'gimei'

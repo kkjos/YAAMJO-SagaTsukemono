@@ -1,9 +1,8 @@
 class Admin::OrdersController < ApplicationController
-
   before_action :authenticate_admin!
 
   def index
-    @orders = Order.all.page(params[:page]).order(id: "DESC")
+    @orders = Order.all.page(params[:page]).order(id: 'DESC')
   end
 
   def show
@@ -23,6 +22,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   private
+  
   def order_params
     params.require(:order).permit(:status)
   end

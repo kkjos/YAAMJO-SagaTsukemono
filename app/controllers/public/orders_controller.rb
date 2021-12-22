@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_cart_item, except: [:index, :show, :complete]
+
   def new
     @order = Order.new
   end
@@ -13,12 +14,12 @@ class Public::OrdersController < ApplicationController
     # 送料に値を渡す（送料変更の場合ここを変更）
     @order.shipping_cost = 800
     if params[:order][:address_option] == "0"
-      #　使用している会員の住所を受け取る
+      # 使用している会員の住所を受け取る
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_option] == "1"
-      #　使用している会員のお届け先情報を受け取る
+      # 使用している会員のお届け先情報を受け取る
       @address = Address.find(params[:order][:address_id])
       @order.postal_code = @address.postal_code
       @order.address = @address.address
@@ -63,7 +64,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where(customer_id: current_customer.id).page(params[:page]).order(id: "DESC")
+    @orders = Order.where(customer_id: current_customer.id).page(params[:page]).order(id: 'DESC')
   end
 
   def show
@@ -75,6 +76,7 @@ class Public::OrdersController < ApplicationController
   end
 
   private
+
   def order_params
     params.require(:order).permit(:postal_code, :address, :name, :payment_method, :shipping_cost, :total_payment, :remark)
   end
