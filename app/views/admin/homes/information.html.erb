@@ -2,39 +2,39 @@
   <h3 class = row>未完了の注文一覧<small class = "ml-2 mt-2">全<%= @orders.where.not(status: 2).count %>件</small></h3>
   <div class = "row">
     <div class = "col-lg-6">
-      <table class = "table">
+      <table class = "table text-center">
         <h4>作成中一覧<small class = "ml-2"><%= @orders.where(status: 1).count %>件</small></h4>
-        <tr class="active" style="background-color:rgba(213,219,219,0.50);">
-          <th class = "col-1 text-center">注文日時</th>
-          <th class = "col-2 text-center">注文者</th>
-          <th class = "col-1 text-center">点数</th>
+        <tr style="background-color:rgba(213,219,219,0.50);">
+          <th class = "col-1">注文日時</th>
+          <th class = "col-2">注文者</th>
+          <th class = "col-1">点数</th>
           <th class = "col-1"></th>
         </tr>
         <% @orders.where(status: 1).each do |order| %>
           <tr class = " bg-white">
-            <td class = "text-center"><%= order.created_at.strftime('%Y/%m/%d') %></td>
-            <td class = "text-center"><%= order.customer.last_name %><%= order.customer.first_name %></td>
-            <td class = "text-center"><%= order.order_details.sum(:amount) %></td>
-            <td class = "text-center"><%= link_to "詳細へ",admin_order_path(order), class: "btn btn-info btn-sm" %></td>
+            <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+            <td><%= order.order_details.sum(:amount) %></td>
+            <td><%= link_to "詳細へ",admin_order_path(order), class: "btn btn-info btn-sm" %></td>
           </tr>
         <% end %>
       </table>
     </div>
     <div class = "col-lg-6">
-      <table class = "table">
+      <table class = "table text-center">
         <h4>未入金者一覧<small class = "ml-2"><%= @orders.where(status: 0).count %>件</small></h4>
-        <tr class="active" style="background-color:rgba(213,219,219,0.50);">
-          <th class = "col-1 text-center">注文日時</th>
-          <th class = "col-2 text-center">注文者</th>
-          <th class = "col-2 text-center">支払い方法</th>
+        <tr style="background-color:rgba(213,219,219,0.50);">
+          <th class = "col-1">注文日時</th>
+          <th class = "col-2">注文者</th>
+          <th class = "col-2">支払い方法</th>
           <th class = "col-1"></th>
         </tr>
         <% @orders.where(status: 0).each do |order| %>
           <tr class = " bg-white">
-            <td class = "text-center"><%= order.created_at.strftime('%Y/%m/%d') %></td>
-            <td class = "text-center"><%= order.customer.last_name %><%= order.customer.first_name %></td>
-            <td class = "text-center"><%= order.payment_method_i18n %></td>
-            <td class = "text-center"><%= link_to "詳細へ",admin_order_path(order), class: "btn btn-info btn-sm" %></td>
+            <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+            <td><%= order.payment_method_i18n %></td>
+            <td><%= link_to "詳細へ",admin_order_path(order), class: "btn btn-info btn-sm" %></td>
           </tr>
         <% end %>
       </table>

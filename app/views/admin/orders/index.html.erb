@@ -1,30 +1,28 @@
 <div class = "container">
-  <div class = "row">
-    <h3>注文履歴一覧</h3>
-  </div>
+  <h3>注文履歴一覧</h3>
   <div class = "row">
     <div class = "col-lg-10 mx-auto">
-  <table class = "table table-bordered">
+  <table class = "table table-bordered text-center">
     <tr class="active" style="background-color:rgba(213,219,219,0.50);">
-      <th class = "col-1 text-center">注文日時</th>
-      <th class = "col-2 text-center">注文者名</th>
-      <th class = "col-2 text-center">注文者TEL</th>
-      <th class = "col-1 text-center">数量</th>
-      <th class = "col-2 text-center">注文ステータス</th>
-      <th class = "col-2 text-center"></th>
+      <th class = "col-1">注文日時</th>
+      <th class = "col-2">注文者名</th>
+      <th class = "col-2">注文者TEL</th>
+      <th class = "col-1">数量</th>
+      <th class = "col-2">注文ステータス</th>
+      <th class = "col-2"></th>
     </tr>
     <% @orders.each do |order| %>
     <tr class = "bg-white">
-      <td class = "text-center"><%= order.created_at.strftime('%Y/%m/%d') %></td>
-      <td class = "text-center">
+      <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+      <td>
         <%= link_to admin_customer_path(order.customer_id) do %>
           <p class = "text-blue"><%= order.customer.last_name %><%= order.customer.first_name %><small>さま</small></p>
         <% end %>
       </td>
-      <td class = "text-center"><%= order.customer.telephone_number %></td>
-      <td class = "text-center"><%= order.order_details.sum(:amount) %>点</td>
-      <td class = "text-center"><%= order.status_i18n %></td>
-      <td class = "text-center"><%= link_to "注文詳細へ",admin_order_path(order), class: "btn btn-info btn-sm" %></td>
+      <td><%= order.customer.telephone_number %></td>
+      <td><%= order.order_details.sum(:amount) %>点</td>
+      <td><%= order.status_i18n %></td>
+      <td><%= link_to "注文詳細へ",admin_order_path(order), class: "btn btn-info btn-sm" %></td>
     </tr>
     <% end %>
   </table>

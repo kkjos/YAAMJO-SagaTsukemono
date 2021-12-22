@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
   def index
+    # 使用している会員Idで特定のカート情報のみ受け取る
     @cart_items = CartItem.where(customer_id: current_customer.id)
   end
 
@@ -25,6 +26,7 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
+    # もしカートアイテム内に同一商品がある場合数量をたす。
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i

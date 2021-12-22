@@ -1,6 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   def show
+    # 使用している会員情報のみ受け取る
     @customer = current_customer
   end
 
@@ -24,6 +25,7 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer = current_customer
+    # もし退会するに更新したなら
     if @customer.update(is_deleted: true)
       sign_out current_customer
     end

@@ -1,7 +1,9 @@
 class Public::AddressesController < ApplicationController
   before_action :authenticate_customer!
+  
   def index
     @address = Address.new
+    # 使用している会員Idで特定のお届け先のみ受け取る
     @addresses = Address.where(customer_id: current_customer.id).page(params[:page])
   end
 

@@ -1,7 +1,5 @@
 <div class = "container">
-  <div class = "row mt-5">
-    <h3>会員詳細<small class = "ml-2"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報</small></h3>
-  </div>
+  <h3>会員詳細<small class = "ml-2"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報</small></h3>
   <div class = "row">
     <div class = "col-lg-6">
       <table class = "table table-borderless border bg-white">
@@ -47,7 +45,7 @@
       <h5>注文履歴</h5>
       <% if @customer.orders.present? %>
       <table class = "table table-bordered">
-        <tr class="active" style="background-color:rgba(213,219,219,0.50);">
+        <tr style="background-color:rgba(213,219,219,0.50);">
           <th>購入日時</th>
           <th>請求金額</th>
           <th>注文ステータス</th>
