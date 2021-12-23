@@ -6,6 +6,13 @@
     </div>
     <div class = "col-lg-7 mt-2">
       <h2 class = "mb-3"><%= @item.name %></h2>
+      <% if @item.is_active? == true %>
+        <% unless customer_signed_in? %>
+          <h5>ログインまたは新規登録していただくとご購入いただけます。</h5>
+        <% end %>
+      <% else %>
+        <h5>現在、販売しておりません。</h5>
+      <% end %>
       <div class = "ml-3">
         <table class = "table table-borderless h5">
           <tr>
@@ -36,21 +43,19 @@
           </tr>
           <tr>
             <td><br>
-              <%= link_to "商品一覧にもどる", items_path, class:"btn btn-primary mt-4" %>
+              <%= link_to "商品一覧にもどる", items_path, class:"btn btn-primary mt-3" %>
             </td>
             <td>
-              <% if customer_signed_in? %>
-                <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
-                  <%= f.hidden_field :item_id, value:@item.id %>
-                  <%= f.hidden_field :customer_id, value:current_customer.id %>
-                  <div>
-                    <%= f.label :amount, "数量" %>
-                    <%= f.select :amount, *[1..10] %><br>
-                    個数を選択ください
-                  </div>
-                  <%= f.submit "カートに入れる", class: 'btn btn-success' %>
-                <% end %>
+            <% if customer_signed_in? && @item.is_active? == true %>
+              <%= form_with model:@cart_item, url:cart_items_path, local:true do |f| %>
+                <%= f.hidden_field :item_id, value:@item.id %>
+                <%= f.hidden_field :customer_id, value:current_customer.id %>
+                <%= f.label :amount, "数量" %>
+                <%= f.select :amount, *[1..10] %><br>
+                個数を選択ください
+                <%= f.submit "カートに入れる", class: 'btn btn-success' %>
               <% end %>
+            <% end %>
             </td>
           </tr>
         </table>
