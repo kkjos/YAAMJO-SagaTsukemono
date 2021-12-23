@@ -27,11 +27,12 @@ class Public::SessionsController < Devise::SessionsController
   # end
   def reject_inactive_customer
     @customer = Customer.find_by(email: params[:customer][:email])
-    return if !@customer
+    return unless @customer
+
     # もし登録されているメールアドレスとパスワードが一致し、退会済みの場合
     if @customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false)
       redirect_to new_customer_registration_path
-      flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+      flash[:notice] = '退会済みです。再度ご登録をしてご利用ください。'
     end
   end
 end

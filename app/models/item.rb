@@ -13,5 +13,4 @@ class Item < ApplicationRecord
   def with_tax_price
     (price * 1.08).floor
   end
-
 end

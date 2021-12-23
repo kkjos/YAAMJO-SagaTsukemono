@@ -9,5 +9,5 @@ class Order < ApplicationRecord
   validates :total_payment, presence: true
 
   enum payment_method: { credit_card: 0, transfer: 1 }
-  enum status: { waiting_for_deposit:0, production_start:1, ready_to_ship:2, shipped:3}
+  enum status: { waiting_for_deposit: 0, production_start: 1, ready_to_ship: 2, shipped: 3 }
 end
