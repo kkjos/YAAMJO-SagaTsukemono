@@ -9,7 +9,7 @@
   <div class="row mt-2">
     <% items.each do |item| %>
       <div class = "col-lg-6 mb-5 d-flex">
-        <div><%= attachment_image_tag item, :image, size: "240x180" %></div>
+        <div><%= attachment_image_tag item, :image, size: "240x180", fallback: "no_image.png", size: '240x180' %></div>
         <div class = "ml-1 py-3">
           <h4 class ="mb-3"><%= item.name %></h4>
           <table class = "ml-3">
