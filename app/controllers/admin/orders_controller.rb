@@ -1,9 +1,8 @@
 class Admin::OrdersController < ApplicationController
-
   before_action :authenticate_admin!
 
   def index
-    @orders = Order.all.page(params[:page]).order(id: "DESC")
+    @orders = Order.all.page(params[:page]).order(id: 'DESC')
   end
 
   def show
@@ -16,13 +15,14 @@ class Admin::OrdersController < ApplicationController
     @order.update(order_params)
     if @order.production_start?
       @order.order_details.each do |order_detail|
-      order_detail.production!
+        order_detail.production!
       end
     end
     redirect_to request.referer
   end
 
   private
+
   def order_params
     params.require(:order).permit(:status)
   end

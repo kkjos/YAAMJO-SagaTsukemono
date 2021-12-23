@@ -26,14 +26,14 @@ class Public::CustomersController < ApplicationController
   def withdraw
     @customer = current_customer
     # もし退会するに更新したなら
-    if @customer.update(is_deleted: true)
-      sign_out current_customer
-    end
+    sign_out current_customer if @customer.update(is_deleted: true)
     redirect_to root_path
   end
 
   private
+
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number, :is_deleted)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code,
+                                     :address, :telephone_number, :is_deleted)
   end
 end

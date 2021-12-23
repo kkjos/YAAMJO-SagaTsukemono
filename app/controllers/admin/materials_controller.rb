@@ -1,7 +1,6 @@
 class Admin::MaterialsController < ApplicationController
-  
   before_action :authenticate_admin!
-  
+
   def index
     @material = Material.new
     @materials = Material.all
@@ -10,7 +9,7 @@ class Admin::MaterialsController < ApplicationController
   def create
     @material = Material.new(material_params)
     if @material.save
-      flash[:notice] = "原菜を追加しました。"
+      flash[:notice] = '原菜を追加しました。'
       redirect_to request.referer
     else
       @materials = Material.all
@@ -25,7 +24,7 @@ class Admin::MaterialsController < ApplicationController
   def update
     @material = Material.find(params[:id])
     if @material.update(material_params)
-      flash[:notice] = "変更しました。"
+      flash[:notice] = '変更しました。'
       redirect_to admin_materials_path
     else
       render :edit
@@ -33,6 +32,7 @@ class Admin::MaterialsController < ApplicationController
   end
 
   private
+
   def material_params
     params.require(:material).permit(:name)
   end
