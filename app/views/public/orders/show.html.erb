@@ -10,6 +10,10 @@
           <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
         </tr>
         <tr>
+          <th>商品状況</th>
+          <td><%= @order.status_i18n %></td>
+        </tr>
+        <tr>
           <th>お届け先名</th>
           <td><%= @order.name %></td>
         </tr>
@@ -45,16 +49,16 @@
     <div class = "col-lg-4">
       <table class = "table bg-white">
         <tr>
+          <th>支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr>
           <th>送料</th>
           <td><%= @order.shipping_cost %>円</td>
         </tr>
         <tr>
           <th>請求金額（税込）</th>
           <td><%= @order.total_payment %>円</td>
-        </tr>
-        <tr>
-          <th>支払方法</th>
-          <td><%= @order.payment_method_i18n %></td>
         </tr>
       </table>
       <div class = "bg-white" >
