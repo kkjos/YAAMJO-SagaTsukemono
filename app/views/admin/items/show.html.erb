@@ -3,7 +3,7 @@
   <div class = "row">
     <div class = "col-lg-5">
       <div style="text-align: center">
-        <%= attachment_image_tag @item, :image, :fill, 350, 350 %>
+        <%= attachment_image_tag @item, :image, :fill, 350, 350, fallback: "no_image.png", size: '350x350' %>
       </div>
     </div>
     <div class = "col-lg-6 mx-auto">

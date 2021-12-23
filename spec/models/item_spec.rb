@@ -6,7 +6,6 @@ RSpec.describe Item, "モデルに関するテスト", type: :model do
     end
   end
   context "空白のバリデーションチェック" do
-    image_id = 'fixture_file_upload { "app/assets/images/top1.png" }'
     it "nameが空白の場合にバリデーションチェックされエラーメッセージが返ってきているか" do
       item = Item.new(name: '', introduction:'美味しい', capacity:'100g', price: '1000')
       expect(item).to be_invalid
