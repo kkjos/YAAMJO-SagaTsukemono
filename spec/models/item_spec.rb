@@ -1,3 +1,4 @@
+
 require 'rails_helper'
 
 RSpec.describe Item, "モデルに関するテスト", type: :model do
