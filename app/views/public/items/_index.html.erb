@@ -1,10 +1,11 @@
   <div class = "row border-bottom h5">
-    <small>原菜別で見る</small>
+    <strong class = "my-auto">原菜別で見る</strong>
     <% materials.each do |material| %>
       <%= link_to items_search_path(:id=> material.id) do %>
           <span class = "btn btn-secondary ml-1"><%= material.name %></span>
       <% end %>
     <% end %>
+    <%= link_to "全ての商品", items_path, class: "btn btn-secondary ml-1" %>
   </div>
   <div class="row mt-2">
     <% items.each do |item| %>

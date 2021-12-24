@@ -1,4 +1,6 @@
 <div class = "container">
-  <h3 class = "my-3">全ての商品<small class = "text-muted">（全<%= @items.count %>件）</small></h3>
-  <%= render "public/items/index", items: @items, materials: @materials %>
+  <div class = "row">
+    <h3 class = "title my-3">全ての商品<small class = "text-muted">（全<%= @items.count %>件）</small></h3>
+  </div>
+    <%= render "public/items/index", items: @items, materials: @materials %>
 </div>
