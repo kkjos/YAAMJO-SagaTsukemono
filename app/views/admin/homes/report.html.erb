@@ -1,0 +1,62 @@
+<div class = "container">
+  <div class = "row">
+    <h3 class = "title">過去の売上</h3>
+  </div>
+  <div class = "row bg-white">
+    <div class = "col-lg-4">
+      <h3><%= @month.strftime('%Y年%m月') %>のデータ</h3>
+      <table class = "table table-borderless">
+        <tr>
+          <th class = "col-6">注文件数</th>
+          <td class = "col-6"><%= @month_orders.count %>件</td>
+        </tr>
+        <tr>
+          <th>通販注文個数</th>
+          <td><%= @month_order_details.sum(:amount) %>個</td>
+        </tr>
+        <tr>
+          <th>通販売上額<small>※送料込</small></th>
+          <td>
+            <%= @month_orders.sum(:total_payment) %>円
+            <small>(うち送料<%= @month_orders.sum(:shipping_cost) %>円)</small>
+          </td>
+        </tr>
+        <tr>
+          <td><%= link_to "前月を見る",admin_report_path(month:@month.prev_month), class: "btn btn-primary" %></td>
+          <td><%= link_to "次月を見る",admin_report_path(month:@month.next_month), class: "btn btn-primary" %></td>
+        </tr>
+      </table>
+    </div>
+    <div class = "col-lg-8">
+      <%= column_chart @month_orders.group_by_day_of_month(:created_at).sum(:total_payment), xtitle: "日付", ytitle: "円"%>
+    </div>
+  </div>
+  <div class = "row bg-white mt-3">
+    <div class = "col-lg-4">
+      <h3><%= @year.strftime('%Y年') %>のデータ</h3>
+      <table class = "table table-borderless">
+        <tr>
+          <th class = "col-6">注文件数</th>
+          <td class = "col-6"><%= @year_orders.count %>件</td>
+        </tr>
+        <tr>
+          <th>通販注文個数</th>
+          <td><%= @year_order_details.sum(:amount) %>個</td>
+        </tr>
+        <tr>
+          <th>通販売上額<small>※送料込</small></th>
+          <td>
+            <%= @year_orders.sum(:total_payment) %>円
+            <small>(うち送料<%= @year_orders.sum(:shipping_cost) %>円)</small>
+          </td>
+        </tr>
+        <tr>
+          <td><%= link_to "前年を見る",admin_report_path(year:@year.prev_year), class: "btn btn-primary" %></td>
+          <td><%= link_to "次年を見る",admin_report_path(year:@year.next_year), class: "btn btn-primary" %></td>
+        </tr>
+      </table>
+    </div>
+    <div class = "col-lg-8">
+      <%= column_chart @year_orders.group_by_month_of_year(:created_at).sum(:total_payment), xtitle: "日付", ytitle: "円"%>
+  </div>
+</div>

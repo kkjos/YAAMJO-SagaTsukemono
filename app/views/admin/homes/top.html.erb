@@ -1,34 +1,74 @@
 <div class = "container">
   <div class = "row">
-    <h3 class = "title">注文履歴一覧</h3>
+    <h3 class = "title">本日の通販営業情報</h3>
   </div>
-  <div class = "row">
-    <div class = "col-10 offset-1">
-  <table class = "table table-bordered">
-    <tr class="active" style="background-color:rgba(213,219,219,0.50);">
-      <th class = "col-1 text-center">注文日時</th>
-      <th class = "col-2 text-center">注文者名</th>
-      <th class = "col-2 text-center">注文者TEL</th>
-      <th class = "col-1 text-center">数量</th>
-      <th class = "col-2 text-center">注文ステータス</th>
-      <th class = "col-2 text-center"></th>
-    </tr>
-    <% @orders.each do |order| %>
-    <tr class = "bg-white">
-      <td class = "text-center"><%= order.created_at.strftime('%Y/%m/%d') %></td>
-      <td class = "text-center">
-        <%= link_to admin_customer_path(order.customer_id) do %>
-          <p class = "text-blue"><%= order.customer.last_name %><%= order.customer.first_name %><small>さま</small></p>
-        <% end %>
-      </td>
-      <td class = "text-center"><%= order.customer.telephone_number %></td>
-      <td class = "text-center"><%= order.order_details.sum(:amount) %>点</td>
-      <td class = "text-center"><%= order.status_i18n %></td>
-      <td class = "text-center"><%= link_to "注文詳細へ",admin_order_path(order), class: "btn btn-info btn-sm" %></td>
-    </tr>
-    <% end %>
-  </table>
-  <div>
-    <%= paginate @orders %>
+  <div class = "row bg-white">
+    <div class = "col-lg-6 mx-auto">
+      <table class = "table">
+        <tr>
+          <th class = "col-6">本日の注文件数</th>
+          <td class = "col-6"><%= @today_orders.count %>件</td>
+        </tr>
+        <tr>
+          <th>本日の注文数量</th>
+          <td><%= @today_order_details.sum(:amount) %>点</td>
+        </tr>
+        <tr>
+          <th>本日の売上額（税込）<small>※送料込</small></th>
+          <td>
+            <%= @today_orders.sum(:total_payment) %>円
+            <small>(うち送料<%= @today_orders.sum(:shipping_cost) %>円)</small>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class = "col-lg-6 mx-auto">
+      <table class = "table">
+        <tr>
+          <th class = "col-6">未完了の注文件数</th>
+          <td class = "col-6"><%= @orders.where.not(status: 2).count %>件</td>
+        </tr>
+        <tr>
+          <th>入金待ち件数</th>
+          <td><%= @orders.where(status: 0).count %>件</td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= link_to "未完了の注文一覧へ", admin_information_path, class: "btn btn-info btn-lg" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class = "row mt-2">
+    <div class = "col-lg-6">
+      <h5>直近１ヶ月の通販営業情報</h5>
+      <table class = "table bg-white">
+        <tr>
+          <th class = "col-6">1ヶ月の注文件数</th>
+          <td class = "col-6"><%= @for30day_orders.count %>件</td>
+        </tr>
+        <tr>
+          <th>1ヶ月の注文数量</th>
+          <td><%= @for30day_order_details.sum(:amount) %>点</td>
+        </tr>
+        <tr>
+          <th>1ヶ月の売上額（税込）<small>※送料込</small></th>
+          <td>
+            <%= @for30day_orders.sum(:total_payment) %>円
+            <small>(うち送料<%= @for30day_orders.sum(:shipping_cost) %>円)</small>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= link_to "過去の売上", admin_report_path, class: "btn btn-info btn-lg" %></td>
+        </tr>
+      </table>
+    </div>
+    <div class = "col-lg-6">
+      <h5>直近１ヶ月の売り上げグラフ</h5>
+      <div class = "bg-white">
+        <%= column_chart @orders.group_by_day(:created_at, last: 30).sum(:total_payment), xtitle: "日付", ytitle: "円"%>
+      </div>
+    </div>
   </div>
 </div>

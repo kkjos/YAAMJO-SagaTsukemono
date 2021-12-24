@@ -1,5 +1,5 @@
 <div class = "row">
-  <div class = "col-6 my-auto">
+  <div class = "col-lg-6 m-auto">
     <ul class="bxslider">
       <li><%= image_tag 'top1.png', :size =>'640x300' %></li>
       <li><%= image_tag 'top2.png', :size =>'640x300' %></li>
@@ -7,12 +7,12 @@
       <li><%= image_tag 'top4.png', :size =>'640x300' %></li>
     </ul>
   </div>
-  <div class = "col-6">
+  <div class = "col-lg-6">
     <div>
-      <div>
-        <%= image_tag 'top5.png', :size =>'640x200' %>
+      <div style="text-align: center">
+        <%= image_tag 'top5.png', :size =>'640x150' %>
       </div>
-      <p>
+      <p class = "text-center">
         保津峡より愛宕山の麓へと分け入った山間の里・水尾は<br>
         「柚子の里」として知られており、栽培の歴史は千年以上に遡り<br>
         御所への献上品となっていたこともあります。<br>
@@ -20,7 +20,7 @@
         さっぱりと仕立てつつまろやかでやさしい味わいのする当店自慢のシリーズ商品です。<br>
       </p>
     </div>
-    <div>
+    <div style="text-align: center">
       <%= link_to items_path do %>
         <%= image_tag 'top6.png', :size =>'640x300' %>
         <p>商品一覧へ</p>
@@ -28,3 +28,15 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(document).on('turbolinks:load', function() {
+    $('.bxslider').bxSlider({
+      auto: true,
+      mode: 'fade',
+      speed: 1500,
+      slideWidth: 640,
+      minSlides: 1
+    });
+  });
+</script>

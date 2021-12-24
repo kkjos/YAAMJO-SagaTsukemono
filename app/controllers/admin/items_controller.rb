@@ -1,6 +1,9 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
-    @items = Item.all.page(params[:page])
+    # 販売ステータス、更新順に並び替え
+    @items = Item.all.page(params[:page]).order(is_active: 'DESC').order(updated_at: 'DESC')
     @materials = Material.all
   end
 
@@ -39,10 +42,11 @@ class Admin::ItemsController < ApplicationController
   def search
     @materials = Material.all
     @material = Material.find(params[:id])
-    @items = Item.where(material_id: @material.id).page(params[:page])
+    @items = Item.where(material_id: @material.id).page(params[:page]).order(updated_at: 'DESC')
   end
 
   private
+
   def item_params
     params.require(:item).permit(:name, :image, :introduction, :capacity, :price, :is_active, :material_id)
   end

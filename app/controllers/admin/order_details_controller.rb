@@ -1,4 +1,6 @@
 class Admin::OrderDetailsController < ApplicationController
+  before_action :authenticate_admin!
+
   def update
     @order_detail = OrderDetail.find(params[:id])
     @order_details = OrderDetail.where(order_id: @order_detail.order.id)
@@ -12,6 +14,7 @@ class Admin::OrderDetailsController < ApplicationController
   end
 
   private
+
   def order_detail_params
     params.require(:order_detail).permit(:making_status)
   end

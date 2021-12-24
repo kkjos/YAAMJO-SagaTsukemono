@@ -1,9 +1,13 @@
 <div class = "container">
   <div class = "row">
-    <h3 class = "title mt-5">マイページ</h3>
+    <h3 class = "title">マイページ</h3>
+    <div>
+      <%= link_to "お届け先一覧", addresses_path, class: "btn btn-info ml-5" %>
+      <%= link_to "注文履歴一覧", orders_path, class: "btn btn-info ml-5" %>
+    </div>
   </div>
   <div class = "row">
-    <div class = "col-8 offset-2">
+    <div class = "col-lg-8 mx-auto mt-3">
       <table class = "table table-borderless bg-white">
         <tr>
           <th>名前</th>

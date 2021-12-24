@@ -1,31 +1,31 @@
 <div class = "container">
   <div class = "row">
-    <h3 class = "title mt-5">カート内商品</h3>
+    <h3 class = "title">カート内商品</h3>
   </div>
   <% if @cart_items.present? %>
     <div class = "row">
-      <div class = "col-12">
-        <table class = "table table-bordered">
-          <tr class="active" style="background-color:rgba(213,219,219,0.50);">
-            <th class="col-1 text-center"></th>
-            <th class="col-3 text-center">商品名</th>
-            <th class="col-2 text-center">税込価格</th>
-            <th class="col-2 text-center">数量</th>
-            <th class="col-2 text-center">小計</th>
-            <th class="col-2 text-center"><%= link_to "カート内全て削除", destroy_all_cart_items_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class:"btn btn-warning" %></th>
+      <div class = "col">
+        <table class = "table table-bordered text-center">
+          <tr style = "background-color:rgba(213,219,219,0.50);">
+            <th class="col-1"></th>
+            <th class="col-3">商品名</th>
+            <th class="col-2">税込価格</th>
+            <th class="col-2">数量</th>
+            <th class="col-2">小計</th>
+            <th class="col-2"><%= link_to "カート内全て削除", destroy_all_cart_items_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class:"btn btn-danger" %></th>
           </tr>
           <% @cart_items.each do |cart_item| %>
             <%= form_with model:cart_item, local:true do |f| %>
             <tr class = "bg-white">
-              <td class = "text-center"><%= attachment_image_tag cart_item.item, :image, :fill, 40, 40 %></td>
-              <td class = "text-center"><%= cart_item.item.name %></td>
-              <td class = "text-center"><%= cart_item.item.with_tax_price %></td>
-              <td class = "text-center">
+              <td><%= attachment_image_tag cart_item.item, :image, :fill, 40, 40, fallback: "no_image.png", size: '40x40' %></td>
+              <td><%= cart_item.item.name %></td>
+              <td><%= cart_item.item.with_tax_price %>円</td>
+              <td>
                 <%= f.select :amount, *[1..10] %>
                 <%= f.submit "数量を変更", class: "btn btn-secondary ml-1" %>
               </td>
-              <td class = "text-center"><%= cart_item.subtotal %></td>
-              <td class = "text-center"><%= link_to "削除する", cart_item_path(cart_item), method: :delete, data: {confirm: '本当に消しますか？'}, class:"btn btn-danger" %></td>
+              <td><%= cart_item.subtotal %>円</td>
+              <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, data: {confirm: '本当に消しますか？'}, class:"btn btn-danger" %></td>
             </tr>
             <% end %>
           <% end %>
@@ -33,19 +33,22 @@
       </div>
     </div>
     <div class = "row">
-      <div class =  "col-6 offset-6 mt-2">
+      <div class = "col-lg-6 text-center mt-5">
+          <%= link_to "商品を追加する", items_path, class: "btn btn-info btn-lg" %>
+      </div>
+      <div class =  "col-lg-6 mt-2">
         <table class = "table bg-white">
           <tr>
             <th>商品合計数量</th>
             <td><%= @cart_items.sum(:amount) %>点</td>
           </tr>
           <tr>
-            <th>商品合計金額</th>
-            <td><%= @cart_items.sum(&:subtotal) %>円</td>
+            <th>商品合計金額(税込)</th>
+            <td class = "h4"><%= @cart_items.sum(&:subtotal) %>円</td>
           </tr>
           <tr>
-            <td><%= link_to "商品を追加する", items_path, class: "btn btn-info" %></td>
-            <td><%= link_to "お買い物を進める", new_order_path, class: "btn btn-primary" %></td>
+            <td></td>
+            <td><%= link_to "お買い物を進める", new_order_path, class: "btn btn-success btn-lg" %></td>
           </tr>
         </table>
       </div>

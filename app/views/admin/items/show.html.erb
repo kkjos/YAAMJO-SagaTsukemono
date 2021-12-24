@@ -1,10 +1,14 @@
 <div class = "container">
-  <h3 class = "title my-3">商品詳細</h3>
   <div class = "row">
-    <div class = "col-5">
-      <div><%= attachment_image_tag @item, :image, :fill, 350, 350 %></div>
+    <h3 class = "title">商品詳細</h3>
+  </div>
+  <div class = "row">
+    <div class = "col-lg-5">
+      <div style="text-align: center">
+        <%= attachment_image_tag @item, :image, :fill, 350, 350, fallback: "no_image.png", size: '350x350' %>
+      </div>
     </div>
-    <div class = "col-6 offset-1">
+    <div class = "col-lg-6 mx-auto">
       <h2 class = "mb-3"><%= @item.name %></h2>
       <div class = "ml-3">
         <table class = "table table-borderless h5">
@@ -21,8 +25,8 @@
             <td><%= @item.capacity %></td>
           </tr>
           <tr>
-            <th>価格</th>
-            <td><%= @item.price %>円<small>（税込<%= @item.with_tax_price %>円）</small></td>
+            <th>税込価格</th>
+            <td><%= @item.with_tax_price %>円<small>（本体価格<%= @item.price %>円）</small></td>
           </tr>
           <tr>
             <th></th>

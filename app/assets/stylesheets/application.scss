@@ -29,6 +29,7 @@ body{
   background-image:url(bg-body.jpg);
   background-size: cover;
   width: 100%;
+  font-family: "Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif;
 }
 header,footer{
   background-image:url(header_footer.png);
@@ -36,9 +37,16 @@ header,footer{
   width: 100%;
 }
 
-.bxslider li {
-  display: none;
+.title{
+  border-bottom: solid 3px orange;
 }
-.bx-viewport .bxslider li {
-  display: block !important;
+
+.bx-wrapper{
+  margin: 0 auto 30px auto;
 }
+// .bxslider li {
+//   display: none;
+// }
+// .bx-viewport .bxslider li {
+//   display: block !important;
+// }

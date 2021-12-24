@@ -3,11 +3,15 @@
     <h3 class = "title">注文履歴詳細</h3>
   </div>
   <div class = "row">
-    <div class = "col-6 offset-3">
+    <div class = "col-lg-6 mx-auto">
       <table class = "table table-borderless bg-white">
         <tr>
           <th>注文日時</th>
           <td><%= @order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        </tr>
+        <tr>
+          <th>商品状況</th>
+          <td><%= @order.status_i18n %></td>
         </tr>
         <tr>
           <th>お届け先名</th>
@@ -24,7 +28,7 @@
     </div>
   </div>
   <div class = "row">
-    <div class = "col-8">
+    <div class = "col-lg-8">
       <table class = "table table-bordered">
         <tr class="active" style="background-color:rgba(213,219,219,0.50);">
           <th class = "col-2 text-center">商品名</th>
@@ -42,24 +46,32 @@
         <% end %>
       </table>
     </div>
-    <div class = "col-4">
+    <div class = "col-lg-4">
       <table class = "table bg-white">
+        <tr>
+          <th>支払方法</th>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
         <tr>
           <th>送料</th>
           <td><%= @order.shipping_cost %>円</td>
         </tr>
         <tr>
           <th>請求金額（税込）</th>
-          <td><%= @order.total_payment %>円</td>
-        </tr>
-        <tr>
-          <th>支払方法</th>
-          <td><%= @order.payment_method_i18n %></td>
+          <td class = "h5"><%= @order.total_payment %>円</td>
         </tr>
       </table>
+      <div class = "bg-white" >
+        <% if @order.remark.blank? %>
+          <h5>備考欄に記入はありませんでした。</h5>
+        <% else %>
+          <h5 style="background-color:rgba(213,219,219,0.50);">備考欄にご記入いただいた内容</h5>
+          <%= @order.remark %>
+        <% end %>
+      </div>
     </div>
    </div>
   <div class = "link d-flex justify-content-center">
-    <%= link_to "注文一覧に戻る", orders_path, class: "btn btn-primary" %>
+    <%= link_to "注文一覧に戻る", orders_path, class: "btn btn-primary btn-lg" %>
   </div>
 </div>

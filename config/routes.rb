@@ -39,10 +39,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
+    get '/information' => 'homes#information'
+    get '/report' => 'homes#report'
     get '/items/search' => 'items#search'
     resources :items, except: [:destroy]
     resources :customers, except: [:new, :create, :destroy]
-    resources :orders, only: [:show, :update]
+    resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]
     resources :materials, except: [:new, :show, :destroy]
   end

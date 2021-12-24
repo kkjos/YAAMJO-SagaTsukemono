@@ -1,38 +1,39 @@
 <div class = "container">
   <div class = "row">
-    <h3 class = "title mt-5">商品編集</h3>
+    <h3 class = "title">商品編集</h3>
   </div>
   <div class = "row">
-    <div class = "col-8 offset-2">
-      <%= form_with model:@item, url:admin_item_path do |f| %>
+    <div class = "col-lg-8 mx-auto">
+      <%= form_with model:@item, url:admin_item_path, local:true do |f| %>
+      <%= render 'layouts/error_messages', resource: f.object %>
         <table class = "table table-borderless">
-          <tr class = "field">
+          <tr>
             <th><%= f.label :image, "画像" %></th>
             <td><%= f.attachment_field :image %></td>
           </tr>
-          <tr class = "field">
+          <tr>
             <th><%= f.label :name, "商品名" %></th>
-            <td><%= f.text_field :name,autocomplete: "商品名",class: "form-control" %></td>
+            <td><%= f.text_field :name, placeholder: "柚子香香　◯◯◯", class: "form-control" %></td>
           </tr>
-          <tr class = "field">
+          <tr>
             <th>原菜</th>
             <td><%= f.select :material_id, options_from_collection_for_select(Material.all, :id, :name), class:"form-control" %></td>
           </tr>
         </div>
       </div>
-          <tr class = "field">
+          <tr>
             <th><%= f.label :introduction, "商品説明" %></th>
-            <td><%= f.text_area :introduction, rows:"5", autocomplete: "商品説明",class: "form-control" %></td>
+            <td><%= f.text_area :introduction, placeholder: "◯月〜◯月　商品説明", rows:"5",class: "form-control" %></td>
           </tr>
-          <tr class = "field">
+          <tr>
             <th><%= f.label :capacity, "内容量" %></th>
-            <td><%= f.text_field :capacity,autocomplete: "内容量",class: "form-control" %></td>
+            <td><%= f.text_field :capacity, placeholder: "◯◯◯g　◯個",class: "form-control" %></td>
           </tr>
-          <tr class = "field">
-            <th><%= f.label :price, "税抜き価格" %></th>
-            <td><%= f.text_field :price, autocomplete: "価格",class: "form-control" %></td>
+          <tr>
+            <th><%= f.label :price, "税抜価格" %></th>
+            <td><%= f.text_field :price, placeholder: "◯◯◯　※税抜",class: "form-control" %></td>
           </tr>
-          <tr class = "field">
+          <tr>
             <th><%= f.label :is_active, "販売ステータス" %></th>
             <td>
               <div class = "radio_button">
@@ -45,10 +46,10 @@
               </div>
             </td>
           </tr>
-          <tr class = "actions">
+          <tr>
             <th></th>
-            <td><%= f.submit "登録する", class: "btn btn-success" %></td>
-            <td><%= link_to "商品詳細に戻る", admin_item_path(@item), class: "btn btn-info" %></td>
+            <td><%= f.submit "登録する", class: "btn btn-success btn-lg" %></td>
+            <td><%= link_to "商品詳細に戻る", admin_item_path(@item), class: "btn btn-info btn-lg" %></td>
           </tr>
         </table>
       <% end %>

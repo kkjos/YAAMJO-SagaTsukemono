@@ -6,12 +6,11 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   validates :price, presence: true
-  validates :image, presence: true
+  validates :capacity, presence: true
 
   attachment :image, destroy: false
 
   def with_tax_price
     (price * 1.08).floor
   end
-
 end
