@@ -30,8 +30,8 @@
             <td><%= @item.capacity %></td>
           </tr>
           <tr>
-            <th>価格</th>
-            <td><%= @item.price %>円<small>（税込<%= @item.with_tax_price %>円）</small></td>
+            <th>税込価格</th>
+            <td><%= @item.with_tax_price %>円<small>（本体価格<%= @item.price %>円）</small></td>
           </tr>
           <tr>
             <th></th>
