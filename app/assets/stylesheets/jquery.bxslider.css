@@ -44,7 +44,7 @@ ul.bxslider {
 /* LOADER */
 .bx-wrapper .bx-loading {
   min-height: 50px;
-  background-image: image-url('bx_loader.gif') center no-repeat #ffffff;
+  background-image: image-url('bx_loader.gif') ;
   height: 100%;
   width: 100%;
   position: absolute;
