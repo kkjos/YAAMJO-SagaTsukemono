@@ -1,28 +1,30 @@
 <div class = "container">
-  <h3>会員一覧</h3>
+  <div class = "row">
+    <h3 class = "title">会員一覧</h3>
+  </div>
   <div class = "row">
     <div class = "col">
-      <table class = "table table-bordered">
+      <table class = "table table-bordered text-center">
         <tr style="background-color:rgba(213,219,219,0.50);">
-          <th class = "col-1 text-center">会員番号</th>
-          <th class = "col-2 text-center">名前</th>
-          <th class = "col-3 text-center">フリガナ</th>
-          <th class = "col-2 text-center">電話番号</th>
-          <th class = "col-2 text-center">会員ステータス</th>
+          <th class = "col-1">会員番号</th>
+          <th class = "col-2">名前</th>
+          <th class = "col-3">フリガナ</th>
+          <th class = "col-2">電話番号</th>
+          <th class = "col-2">会員ステータス</th>
           <th class = "col-2"></th>
         </tr>
         <% @customers.each do |customer| %>
           <tr class = "bg-white">
-            <td class = "text-center"><%= customer.id %></td>
-            <td class = "text-center"><%= customer.last_name %><%= customer.first_name %><small>さん</small></td>
-            <td class = "text-center"><%= customer.last_name_kana %><%= customer.first_name_kana %><small>さん</small></td>
-            <td class = "text-center"><%= customer.telephone_number %></td>
+            <td><%= customer.id %></td>
+            <td><%= customer.last_name %><%= customer.first_name %><small>さん</small></td>
+            <td><%= customer.last_name_kana %><%= customer.first_name_kana %><small>さん</small></td>
+            <td><%= customer.telephone_number %></td>
             <% if customer.is_deleted? %>
-            <td class = "text-center text-danger">退会済</td>
+            <td class = "text-danger">退会済</td>
             <% else %>
-            <td class = "text-center text-success">有効</td>
+            <td class = "text-success">有効</td>
             <% end %>
-            <td class = "text-center"><%= link_to "詳細へ", admin_customer_path(customer.id), class: "btn btn-info btn-sm text-center" %></td>
+            <td><%= link_to "詳細へ", admin_customer_path(customer.id), class: "btn btn-info btn-sm text-center" %></td>
           </tr>
         <% end %>
       </table>

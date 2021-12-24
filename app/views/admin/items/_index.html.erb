@@ -1,21 +1,22 @@
 <div class = "row border-bottom h5">
-    <small>原菜別で見る</small>
-    <% materials.each do |material| %>
-      <%= link_to admin_items_search_path(:id=> material.id) do %>
-          <span class = "btn btn-secondary ml-1"><%= material.name %></span>
-      <% end %>
+  <strong class = "my-auto">原菜別で見る</strong>
+  <% materials.each do |material| %>
+    <%= link_to admin_items_search_path(:id=> material.id) do %>
+        <span class = "btn btn-secondary ml-1"><%= material.name %></span>
     <% end %>
-  </div>
-  <div class = "row">
-    <div class = "col-lg-10 mx-auto mt-1">
-      <table class = "table table-bordered text-center">
-        <tr style = "background-color:rgba(213,219,219,0.50);">
-          <th class = "col-2">商品名</th>
-          <th class = "col-1">内容量</th>
-          <th class = "col-3">税抜き価格(税込)</th>
-          <th class = "col-2">販売ステータス</th>
-          <th class = "col-2"></th>
-        </tr>
+  <% end %>
+  <%= link_to "全ての商品", admin_items_path, class: "btn btn-secondary ml-1" %>
+</div>
+<div class = "row">
+  <div class = "col-lg-10 mx-auto mt-1">
+    <table class = "table table-bordered text-center">
+      <tr style = "background-color:rgba(213,219,219,0.50);">
+        <th class = "col-2">商品名</th>
+        <th class = "col-1">内容量</th>
+        <th class = "col-3">税抜き価格(税込)</th>
+        <th class = "col-2">販売ステータス</th>
+        <th class = "col-2"></th>
+      </tr>
         <% items.each do |item| %>
           <tr class = "bg-white">
             <td><%= item.name %></td>
@@ -30,8 +31,8 @@
           </tr>
         <% end %>
       </table>
-      <div>
+    <div>
       <%= paginate items %>
-      </div>
     </div>
   </div>
+</div>

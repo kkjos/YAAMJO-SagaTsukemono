@@ -1,43 +1,43 @@
-  <div class = "row border-bottom h5">
-    <strong class = "my-auto">原菜別で見る</strong>
-    <% materials.each do |material| %>
-      <%= link_to items_search_path(:id=> material.id) do %>
-          <span class = "btn btn-secondary ml-1"><%= material.name %></span>
-      <% end %>
+<div class = "row border-bottom h5">
+  <strong class = "my-auto">原菜別で見る</strong>
+  <% materials.each do |material| %>
+    <%= link_to items_search_path(:id=> material.id) do %>
+        <span class = "btn btn-secondary ml-1"><%= material.name %></span>
     <% end %>
-    <%= link_to "全ての商品", items_path, class: "btn btn-secondary ml-1" %>
-  </div>
-  <div class="row mt-2">
-    <% items.each do |item| %>
-      <div class = "col-lg-6 mb-5 d-flex">
-        <div><%= attachment_image_tag item, :image, size: "240x180", fallback: "no_image.png", size: '240x180' %></div>
-        <div class = "ml-1 py-3">
-          <h4 class ="mb-2"><%= item.name %></h4>
-          <% if item.is_active? == false %>
-            <h5 class = "text-danger ml-3">販売停止中</h5>
-          <% end %>
-          <table class = "ml-3">
-            <tr>
-              <th>原菜:</th>
-              <td><%= item.material.name %></td>
-            </tr>
-            <tr>
-              <th>内容:</th>
-              <td><%= item.capacity %></td>
-            </tr>
-            <tr>
-              <th>価格:</th>
-              <td><%= item.price %>円<small>（税込<%= item.with_tax_price %>円）</small></td>
-            </tr>
-            <tr>
-              <th></th>
-              <td><%= link_to "詳細へ", item_path(item), class: "btn btn-primary" %></td>
-            </tr>
-          </table>
-        </div>
+  <% end %>
+  <%= link_to "全ての商品", items_path, class: "btn btn-secondary ml-1" %>
+</div>
+<div class="row mt-2">
+  <% items.each do |item| %>
+    <div class = "col-lg-6 mb-5 d-flex">
+      <div><%= attachment_image_tag item, :image, size: "240x180", fallback: "no_image.png", size: '240x180' %></div>
+      <div class = "ml-1 py-3">
+        <h4 class ="mb-2"><%= item.name %></h4>
+        <% if item.is_active? == false %>
+          <h5 class = "text-danger ml-3">販売停止中</h5>
+        <% end %>
+        <table class = "ml-3">
+          <tr>
+            <th>原菜:</th>
+            <td><%= item.material.name %></td>
+          </tr>
+          <tr>
+            <th>内容:</th>
+            <td><%= item.capacity %></td>
+          </tr>
+          <tr>
+            <th>価格:</th>
+            <td><%= item.price %>円<small>（税込<%= item.with_tax_price %>円）</small></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= link_to "詳細へ", item_path(item), class: "btn btn-primary" %></td>
+          </tr>
+        </table>
       </div>
-    <% end %>
-  </div>
-  <div>
-    <%= paginate items %>
-  </div>
+    </div>
+  <% end %>
+</div>
+<div>
+  <%= paginate items %>
+</div>
