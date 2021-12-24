@@ -25,7 +25,7 @@
         <tr style = "background-color:rgba(213,219,219,0.50);">
           <th class = "col-2"></th>
           <th class = "col-3">商品名</th>
-          <th class = "col-2">価格（税込）</th>
+          <th class = "col-2">税込価格</th>
           <th class = "col-2">数量</th>
           <th class = "col-3">小計</th>
         </tr>
@@ -42,7 +42,7 @@
         <% end %>
       </table>
     </div>
-    <div class = "col-lg-5 col-offset-1 my-auto">
+    <div class = "col-lg-6 my-auto">
       <table class = "table table-borderd bg-white">
         <tr>
           <th class = "col-5">支払い方法</th>
@@ -71,7 +71,7 @@
           <%= f.hidden_field :total_payment, :value =>[@order.shipping_cost + @item_total.to_i] %>
           <div class = "h4">
             <%= f.label :remark, "備考欄" %>
-            <%= f.text_area :remark, placeholder: "ご希望等ございましたらご自由にご記入ください。　　　※お電話にてご相談させていただく場合がございます。", rows:"5",class: "form-control" %>
+            <%= f.text_area :remark, placeholder: "ご希望等ございましたら自由にご記入ください。", rows:"5",class: "form-control" %>
           </div>
           <div class = "text-center">
             <%= f.submit "注文を確定する", class: "btn btn-success btn-lg mt-1" %>

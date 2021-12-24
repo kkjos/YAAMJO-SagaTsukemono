@@ -26,12 +26,12 @@
             <td><%= item.capacity %></td>
           </tr>
           <tr>
-            <th>価格:</th>
-            <td><%= item.price %>円<small>（税込<%= item.with_tax_price %>円）</small></td>
+            <th>税込価格:</th>
+            <td class = "h5"><%= item.with_tax_price %>円<small>（本体価格<%= item.price %>円）</small></td>
           </tr>
           <tr>
             <th></th>
-            <td><%= link_to "詳細へ", item_path(item), class: "btn btn-primary" %></td>
+            <td><%= link_to "詳細へ", item_path(item), class: "btn btn-primary mt-2" %></td>
           </tr>
         </table>
       </div>

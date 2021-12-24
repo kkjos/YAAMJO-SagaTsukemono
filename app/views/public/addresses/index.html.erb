@@ -2,29 +2,33 @@
   <div class = "row">
     <h3 class = "title">宛先一覧</h3>
   </div>
-  <div class = "row"></div>
-    <table class = "table table-bordered text-center">
-      <tr style = "background-color:rgba(213,219,219,0.50);">
-        <th class = "col-2">名前</th>
-        <th class = "col-2">郵便番号</th>
-        <th class = "col-4">住所</th>
-        <th class = "col-2"></th>
-        <th class = "col-2"></th>
-      </tr>
-      <% @addresses.each do |address| %>
-      <tr class = "bg-white">
-        <td><%= address.name %></td>
-        <td><%= address.postal_code %></td>
-        <td><%= address.address %></td>
-        <td><%= link_to "変更する", edit_address_path(address), class:"btn btn-success" %></td>
-        <td><%= link_to "削除する", address_path(address), method: :delete, data: {confirm: '本当に削除してよろしいですか？'}, class:"btn btn-danger" %></td>
-      </tr>
-      <% end %>
-    </table>
-    <div>
-      <%= paginate @addresses %>
+  <% if @addresses.present? %>
+    <div class = "row">
+      <table class = "table table-bordered text-center">
+        <tr style = "background-color:rgba(213,219,219,0.50);">
+          <th class = "col-2">名前</th>
+          <th class = "col-2">郵便番号</th>
+          <th class = "col-4">住所</th>
+          <th class = "col-2"></th>
+          <th class = "col-2"></th>
+        </tr>
+        <% @addresses.each do |address| %>
+          <tr class = "bg-white">
+            <td><%= address.name %></td>
+            <td><%= address.postal_code %></td>
+            <td><%= address.address %></td>
+            <td><%= link_to "変更する", edit_address_path(address), class:"btn btn-success" %></td>
+            <td><%= link_to "削除する", address_path(address), method: :delete, data: {confirm: '本当に削除してよろしいですか？'}, class:"btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </table>
+      <div>
+        <%= paginate @addresses %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <h5 class = "text-center">現在登録されているお届け先はありません。</h5>
+  <% end %>
   <div class = "row">
     <div class = "col-lg-8 mx-auto">
       <h5>新規登録</h5>
