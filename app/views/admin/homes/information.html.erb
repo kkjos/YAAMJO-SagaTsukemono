@@ -1,5 +1,7 @@
 <div class = "container">
-  <h3 class = row>未完了の注文一覧<small class = "ml-2 mt-2">全<%= @orders.where.not(status: 2).count %>件</small></h3>
+  <div class = "row">
+    <h3 class = "title">未完了の注文一覧<small class = "ml-2 mt-2">全<%= @orders.where.not(status: 2).count %>件</small></h3>
+  </div>
   <div class = "row">
     <div class = "col-lg-6">
       <table class = "table text-center">
@@ -13,7 +15,7 @@
         <% @orders.where(status: 1).each do |order| %>
           <tr class = " bg-white">
             <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+            <td><%= order.customer.last_name %><%= order.customer.first_name %><small>さん</small></td>
             <td><%= order.order_details.sum(:amount) %></td>
             <td><%= link_to "詳細へ",admin_order_path(order), class: "btn btn-info btn-sm" %></td>
           </tr>
