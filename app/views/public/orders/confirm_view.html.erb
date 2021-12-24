@@ -1,6 +1,6 @@
 <div class = "container">
   <div class = "row">
-    <h3>注文確認画面</h3>
+    <h3 class = "title">注文確認画面</h3>
   </div>
   <div class = "row">
     <div class = "col-lg-6 mx-auto">
@@ -23,14 +23,16 @@
     <div class = "col-lg-6">
       <table class = "table table-bordered text-center">
         <tr style = "background-color:rgba(213,219,219,0.50);">
-          <th class = "col-4">商品名</th>
-          <th class = "col-3">価格（税込）</th>
+          <th class = "col-2"></th>
+          <th class = "col-3">商品名</th>
+          <th class = "col-2">価格（税込）</th>
           <th class = "col-2">数量</th>
           <th class = "col-3">小計</th>
         </tr>
         <% @item_total = 0 %>
         <% @cart_items.each do |cart_item| %>
           <tr class = "bg-white">
+            <td><%= attachment_image_tag cart_item.item, :image, :fill, 30, 30, fallback: "no_image.png", size: '30x30' %></td>
             <td><%= cart_item.item.name %></td>
             <td><%= cart_item.with_tax_price %>円</td>
             <td><%= cart_item.amount %></td>
@@ -43,20 +45,20 @@
     <div class = "col-lg-5 col-offset-1 my-auto">
       <table class = "table table-borderd bg-white">
         <tr>
-          <th class = "col-4">支払い方法</th>
-          <td class = "col-8"><%= @order.payment_method_i18n %></td>
+          <th class = "col-5">支払い方法</th>
+          <td class = "col-7"><%= @order.payment_method_i18n %></td>
         </tr>
         <tr>
           <th>送料</th>
           <td><%= @order.shipping_cost %></td>
         </tr>
         <tr>
-          <th>商品合計</th>
+          <th>商品合計金額(税込)</th>
           <td><%= @item_total %>円</td>
         </tr>
         <tr>
-          <th>請求金額</th>
-          <td><%= @order.shipping_cost + @item_total.to_i %>円</td>
+          <th>請求合計金額(税込)</th>
+          <td class = "h4"><%= @order.shipping_cost + @item_total.to_i %>円</td>
         </tr>
       </table>
       <div>
