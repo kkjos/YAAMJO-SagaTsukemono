@@ -1,5 +1,7 @@
 <div class = "container">
-  <h3>商品詳細</h3>
+  <div class = "row">
+    <h3 class = "title">商品詳細</h3>
+  </div>
   <div class = "row">
     <div class = "col-lg-5">
       <div style="text-align: center"><%= attachment_image_tag @item, :image, :fill, 350, 350, fallback: "no_image.png", size: '350x350' %></div>
@@ -8,10 +10,10 @@
       <h2 class = "mb-3"><%= @item.name %></h2>
       <% if @item.is_active? == true %>
         <% unless customer_signed_in? %>
-          <h5>ログインまたは新規登録していただくとご購入いただけます。</h5>
+          <strong class = "border-bottom border-2 border-danger">ログインまたは新規登録していただくとご購入いただけます。</strong>
         <% end %>
       <% else %>
-        <h5>現在、販売しておりません。</h5>
+          <strong class = "border-bottom border-2 border-danger">現在、販売しておりません。</strong>
       <% end %>
       <div class = "ml-3">
         <table class = "table table-borderless h5">

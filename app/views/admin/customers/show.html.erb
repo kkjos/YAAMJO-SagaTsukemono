@@ -1,5 +1,8 @@
 <div class = "container">
-  <h3>会員詳細<small class = "ml-2"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報</small></h3>
+  <div class = "row">
+    <h3 class = "title">会員詳細</h3>
+    <small class = "mt-3 ml-2 h5"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報</small>
+  </div>
   <div class = "row">
     <div class = "col-lg-6">
       <table class = "table table-borderless border bg-white">

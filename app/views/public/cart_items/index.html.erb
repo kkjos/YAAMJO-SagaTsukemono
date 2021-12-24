@@ -1,5 +1,7 @@
 <div class = "container">
-  <h3>カート内商品</h3>
+  <div class = "row">
+    <h3 class = "title">カート内商品</h3>
+  </div>
   <% if @cart_items.present? %>
     <div class = "row">
       <div class = "col">
@@ -10,19 +12,19 @@
             <th class="col-2">税込価格</th>
             <th class="col-2">数量</th>
             <th class="col-2">小計</th>
-            <th class="col-2"><%= link_to "カート内全て削除", destroy_all_cart_items_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class:"btn btn-warning" %></th>
+            <th class="col-2"><%= link_to "カート内全て削除", destroy_all_cart_items_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class:"btn btn-danger" %></th>
           </tr>
           <% @cart_items.each do |cart_item| %>
             <%= form_with model:cart_item, local:true do |f| %>
             <tr class = "bg-white">
               <td><%= attachment_image_tag cart_item.item, :image, :fill, 40, 40, fallback: "no_image.png", size: '40x40' %></td>
               <td><%= cart_item.item.name %></td>
-              <td><%= cart_item.item.with_tax_price %></td>
+              <td><%= cart_item.item.with_tax_price %>円</td>
               <td>
                 <%= f.select :amount, *[1..10] %>
                 <%= f.submit "数量を変更", class: "btn btn-secondary ml-1" %>
               </td>
-              <td><%= cart_item.subtotal %></td>
+              <td><%= cart_item.subtotal %>円</td>
               <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, data: {confirm: '本当に消しますか？'}, class:"btn btn-danger" %></td>
             </tr>
             <% end %>
@@ -31,7 +33,9 @@
       </div>
     </div>
     <div class = "row">
-      <div class = "col-lg-6"></div>
+      <div class = "col-lg-6 text-center mt-5">
+          <%= link_to "商品を追加する", items_path, class: "btn btn-info btn-lg" %>
+      </div>
       <div class =  "col-lg-6 mt-2">
         <table class = "table bg-white">
           <tr>
@@ -39,12 +43,12 @@
             <td><%= @cart_items.sum(:amount) %>点</td>
           </tr>
           <tr>
-            <th>商品合計金額</th>
-            <td><%= @cart_items.sum(&:subtotal) %>円</td>
+            <th>商品合計金額(税込)</th>
+            <td class = "h4"><%= @cart_items.sum(&:subtotal) %>円</td>
           </tr>
           <tr>
-            <td><%= link_to "商品を追加する", items_path, class: "btn btn-info" %></td>
-            <td><%= link_to "お買い物を進める", new_order_path, class: "btn btn-primary" %></td>
+            <td></td>
+            <td><%= link_to "お買い物を進める", new_order_path, class: "btn btn-success btn-lg" %></td>
           </tr>
         </table>
       </div>
