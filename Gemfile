@@ -58,6 +58,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'pry-byebug'
 end
 
 gem 'faker'
@@ -73,7 +74,6 @@ gem 'enum_help'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'jquery-rails'
 gem 'kaminari'
-gem 'pry-byebug'
 gem 'rails-i18n'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
