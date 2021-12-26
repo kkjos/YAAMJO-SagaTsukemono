@@ -31,6 +31,7 @@
 - [ER図](https://drive.google.com/file/d/1etlbIRGIrQSEWq8UgnpIiOfXkP91EDfi/view?usp=sharing)
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1bu3oCuZH_KA7Tv-eW70pCbn3JQNJCs4t/edit?usp=sharing&ouid=105797685610303566461&rtpof=true&sd=true)
 - [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1i-uBxIGldU9u883COHAsdqFQol1Sj-kk/edit?usp=sharing&ouid=105797685610303566461&rtpof=true&sd=true)
+- [テスト仕様書](https://docs.google.com/spreadsheets/d/1pUjE4Zcj4iqbQ4KaEWjeibXtfdqb9yYL/edit?usp=sharing&ouid=105797685610303566461&rtpof=true&sd=true)
 
 ## チャレンジ要素一覧
 [チャレンジ要素一覧](https://docs.google.com/spreadsheets/d/15UAuTZc3Zo6S9Uj-B-8jbfSsJNvRWrCl52uFf925768/edit?usp=sharing)
@@ -42,7 +43,7 @@
   - CSS 3
   - JavaScript
   - Ruby 2.6.3
-  - Rails 5.2.5
+  - Rails 5.2.6
   - SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
