@@ -4,6 +4,9 @@
     <strong class = "mt-3 ml-2">①で支払い方法指定後、②でお届け先を選んでください。</strong>
   </div>
   <%= form_with model:@order, url:confirm_orders_path, local:true do |f| %>
+  <div class = "col-lg-6 mx-auto">
+    <%= render 'layouts/error_messages', resource: @address %>
+  </div>
   <div class = "row mt-3">
     <div class = "col-lg-6 bg-white">
       <h4>①支払い方法</h4>
@@ -44,7 +47,7 @@
             <td><%= f.text_field :name, class:"form-control" %></td>
           </tr>
           <tr>
-            <th><%= f.label :postal_code, "郵便番号" %></th>
+            <th><%= f.label :postal_code, "郵便番号" %><small>(ハイフンなし)</small></th>
             <td><%= f.text_field :postal_code, class:"form-control" %></td>
           </tr>
           <tr>

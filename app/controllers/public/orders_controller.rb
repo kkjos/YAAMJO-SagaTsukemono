@@ -17,28 +17,30 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
+      session[:order] = @order
+      redirect_to confirm_view_orders_path
     elsif params[:order][:address_option] == '1'
       # 　使用している会員のお届け先情報を受け取る
       @address = Address.find(params[:order][:address_id])
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
+      session[:order] = @order
+      redirect_to confirm_view_orders_path
     elsif params[:order][:address_option] == '2'
       # 入力された情報を受け取る
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
       # お届け先を作成
-      Address.create(customer_id: current_customer.id, postal_code: @order.postal_code, address: @order.address,
+      @address = Address.new(customer_id: current_customer.id, postal_code: @order.postal_code, address: @order.address,
                      name: @order.name)
-    end
-    # もし入力欄の項目のうち空白があれば
-    if @order.postal_code.blank? || @order.address.blank? || @order.name.blank?
-      render :new
-    else
-      # sessionに格納する
-      session[:order] = @order
-      redirect_to confirm_view_orders_path
+      if @address.save
+         session[:order] = @order
+        redirect_to confirm_view_orders_path
+      else
+        render :new
+      end
     end
   end
 
@@ -55,13 +57,15 @@ class Public::OrdersController < ApplicationController
     if @order.save
       # カートアイテムの情報から注文詳細を作成
       @cart_items.each do |cart_item|
-        OrderDetail.create(order_id: @order.id, item_id: cart_item.item_id, amount: cart_item.amount,
+        OrderDetail.create!(order_id: @order.id, item_id: cart_item.item_id, amount: cart_item.amount,
                            price: cart_item.with_tax_price)
       end
       # 完了したのちカートアイテム情報を全て削除
       current_customer.cart_items.destroy_all
       redirect_to complete_orders_path
     end
+
+
   end
 
   def index

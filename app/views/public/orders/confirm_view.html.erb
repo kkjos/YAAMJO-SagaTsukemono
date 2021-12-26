@@ -69,10 +69,8 @@
           <%= f.hidden_field :payment_method %>
           <%= f.hidden_field :shipping_cost %>
           <%= f.hidden_field :total_payment, :value =>[@order.shipping_cost + @item_total.to_i] %>
-          <div class = "h4">
-            <%= f.label :remark, "備考欄" %>
-            <%= f.text_area :remark, placeholder: "ご希望等ございましたら自由にご記入ください。", rows:"5",class: "form-control" %>
-          </div>
+          <%= f.label :remark, "備考欄", class: "h4" %>
+          <%= f.text_area :remark, placeholder: "ご希望等ございましたらご自由にご記入ください。", rows:"5",class: "form-control" %>
           <div class = "text-center">
             <%= f.submit "注文を確定する", class: "btn btn-success btn-lg mt-1" %>
           </div>
