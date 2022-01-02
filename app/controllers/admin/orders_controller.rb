@@ -1,8 +1,9 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
+  helper_method :sort_column, :sort_direction
 
   def index
-    @orders = Order.all.page(params[:page]).order(id: 'DESC')
+    @orders = Order.all.page(params[:page]).order("#{sort_column} #{sort_direction}")
   end
 
   def show
@@ -25,5 +26,13 @@ class Admin::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:status)
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def sort_column
+    Order.column_names.include?(params[:sort]) ? params[:sort] : 'id'
   end
 end

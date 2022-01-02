@@ -6,11 +6,11 @@
     <div class = "col-lg-10 mx-auto">
   <table class = "table table-bordered text-center">
     <tr class="active" style="background-color:rgba(213,219,219,0.50);">
-      <th class = "col-1">注文日時</th>
+      <th class = "col-1"><%= sort_order "created_at", "注文日時" %></th>
       <th class = "col-2">注文者名</th>
       <th class = "col-2">注文者TEL</th>
       <th class = "col-1">数量</th>
-      <th class = "col-2">注文ステータス</th>
+      <th class = "col-2"><%= sort_order "status", "注文ステータス" %></th>
       <th class = "col-2"></th>
     </tr>
     <% @orders.each do |order| %>
