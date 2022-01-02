@@ -6,11 +6,11 @@
     <div class = "col">
       <table class = "table table-bordered text-center">
         <tr style="background-color:rgba(213,219,219,0.50);">
-          <th class = "col-1">会員番号</th>
-          <th class = "col-2">名前</th>
-          <th class = "col-3">フリガナ</th>
-          <th class = "col-2">電話番号</th>
-          <th class = "col-2">会員ステータス</th>
+          <th class = "col-1"><%= sort_order "id", "会員番号" %></th>
+          <th class = "col-2"><%= sort_order "last_name", "名前" %></th>
+          <th class = "col-3"><%= sort_order "last_name_kana", "フリガナ" %></th>
+          <th class = "col-2"><%= sort_order "telephone_number", "電話番号" %></th>
+          <th class = "col-2"><%= sort_order "is_deleted", "会員ステータス" %></th>
           <th class = "col-2"></th>
         </tr>
         <% @customers.each do |customer| %>
