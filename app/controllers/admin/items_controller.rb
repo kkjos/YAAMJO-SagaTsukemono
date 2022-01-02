@@ -1,9 +1,9 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
+  helper_method :sort_column, :sort_direction
 
   def index
-    # 販売ステータス、更新順に並び替え
-    @items = Item.all.page(params[:page]).order(is_active: 'DESC').order(updated_at: 'DESC')
+    @items = Item.all.page(params[:page]).order("#{sort_column} #{sort_direction}")
     @materials = Material.all
   end
 
@@ -49,5 +49,13 @@ class Admin::ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :image, :introduction, :capacity, :price, :is_active, :material_id)
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def sort_column
+    Item.column_names.include?(params[:sort]) ? params[:sort] : 'id'
   end
 end
