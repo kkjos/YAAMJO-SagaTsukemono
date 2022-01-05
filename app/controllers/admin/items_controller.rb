@@ -5,6 +5,7 @@ class Admin::ItemsController < ApplicationController
   def index
     @items = Item.all.page(params[:page]).order("#{sort_column} #{sort_direction}")
     @materials = Material.all
+    @items_rank = Item.find(OrderDetail.group(:item_id).order(amount: :desc).limit(10).pluck(:item_id))
   end
 
   def show
