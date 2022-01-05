@@ -8,12 +8,28 @@
   <%= link_to "全ての商品", admin_items_path, class: "btn btn-secondary ml-1" %>
 </div>
 <div class = "row">
-  <div class = "col-lg-10 mx-auto mt-1">
+  <div class = "col-lg-3">
+    <table class = "table table-bordered text-center">
+      <tr style = "background-color:rgba(213,219,219,0.50);">
+        <th></th>
+        <th>商品名</th>
+        <th>(個)</th>
+      </tr>
+      <% @items_rank.each.with_index(1) do |item_rank, i| %>
+        <tr class = "bg-warning">
+          <td><%= i %>位</td>
+          <td><%= item_rank.name %></td>
+          <td><%= item_rank.order_details.sum(:amount) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class = "col-lg-9 mt-1">
     <table class = "table table-bordered text-center">
       <tr style = "background-color:rgba(213,219,219,0.50);">
         <th class = "col-2"><%= sort_order "name", "商品名" %></th>
         <th class = "col-1"><%= sort_order "capacity", "内容量" %></th>
-        <th class = "col-3"><%= sort_order "price", "税込価格(本体)" %></th>
+        <th class = "col-2"><%= sort_order "price", "税込価格(本体)" %></th>
         <th class = "col-2"><%= sort_order "is_active", "販売ステータス" %></th>
         <th class = "col-2"></th>
       </tr>
