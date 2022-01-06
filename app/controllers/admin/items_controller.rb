@@ -44,6 +44,7 @@ class Admin::ItemsController < ApplicationController
     @materials = Material.all
     @material = Material.find(params[:id])
     @items = Item.where(material_id: @material.id).page(params[:page]).order("#{sort_column} #{sort_direction}")
+    @items_rank = Item.find(OrderDetail.group(:item_id).order(amount: :desc).limit(10).pluck(:item_id))
   end
 
   private
