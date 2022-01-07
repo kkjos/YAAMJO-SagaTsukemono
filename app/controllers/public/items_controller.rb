@@ -3,6 +3,7 @@ class Public::ItemsController < ApplicationController
     # 販売ステータス、更新順に並び替え
     @items = Item.all.page(params[:page]).order(is_active: 'DESC').order(updated_at: 'DESC')
     @materials = Material.all
+    @items_rank = Item.find(OrderDetail.group(:item_id).order(amount: :desc).limit(3).pluck(:item_id))
   end
 
   def show
