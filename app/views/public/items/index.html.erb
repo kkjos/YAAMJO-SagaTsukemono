@@ -1,9 +1,9 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-8">
+    <div class = "col-3">
       <h3 class = "title">全ての商品<small class = "text-muted">（全<%= @items.count %>件）</small></h3>
     </div>
-    <div class = "col-4">
+    <div class = "offset-5 col-4">
       <h4>売り上げランキング</h4>
       <table class = "table table-bordered text-center">
         <% @items_rank.each.with_index(1) do |item_rank, i| %>
