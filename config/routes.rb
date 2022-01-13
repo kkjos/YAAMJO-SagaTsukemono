@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
     get '/inquiry' => 'homes#inquiry'
     get '/items/search' => 'items#search'
+    resources :contacts, only: [:new, :create]
     resources :items, only: [:index, :show]
     resources :customers, only: [] do
       collection do
