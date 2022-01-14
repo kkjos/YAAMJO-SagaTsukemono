@@ -6,11 +6,12 @@
     <div class = "col-lg-10 mx-auto">
       <table class = "table table-bordered text-center">
         <tr style="background-color:rgba(213,219,219,0.50);">
-          <th class = "col-2">日付</th>
-          <th class = "col-2">名前</th>
-          <th class = "col-3">メールアドレス</th>
-          <th class = "col-3">電話番号</th>
-          <th class = "col-2"></th>
+          <th>日付</th>
+          <th>名前</th>
+          <th>メールアドレス</th>
+          <th>電話番号</th>
+          <th>ステータス</th>
+          <th></th>
         </tr>
         <% @contacts.each do |contact| %>
           <tr class = "bg-white">
@@ -18,6 +19,11 @@
             <td><%= contact.name %><small>さん</small></td>
             <td><%= contact.email %></td>
             <td><%= contact.telephone_number %></td>
+            <% if contact.status %>
+              <td class = "text-success">返信済</td>
+            <% else %>
+              <td class = "text-danger">未返信</td>
+            <% end %>
             <td><%= link_to "詳細へ", admin_contact_path(contact.id), class: "btn btn-info btn-sm text-center" %></td>
           </tr>
         <% end %>

@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     get '/information' => 'homes#information'
     get '/report' => 'homes#report'
     get '/items/search' => 'items#search'
-    resources :contacts, only: [:index, :show]
+    resources :contacts, only: [:index, :show, :update]
     resources :items, except: [:destroy]
     resources :customers, except: [:new, :create, :destroy]
     resources :orders, only: [:index, :show, :update]
