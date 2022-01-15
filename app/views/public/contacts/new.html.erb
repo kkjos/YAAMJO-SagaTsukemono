@@ -6,6 +6,7 @@
   <div class = "row">
     <div class = "col-lg-8 mx-auto">
       <%= form_with model:@contact, url:contacts_path, local:true do |f| %>
+      <%= render 'layouts/error_messages', resource: f.object %>
         <table class = "table table-borderless border bg-white">
           <tr>
             <th><%= f.label :name, "お名前" %></th>
