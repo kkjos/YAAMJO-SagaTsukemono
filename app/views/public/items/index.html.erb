@@ -1,6 +1,21 @@
 <div class = "container">
   <div class = "row">
-    <h3 class = "title my-3">全ての商品<small class = "text-muted">（全<%= @items.count %>件）</small></h3>
+    <div class = "col-3">
+      <h3 class = "title">全ての商品<small class = "text-muted">（全<%= @items.count %>件）</small></h3>
+    </div>
+    <div class = "offset-5 col-4">
+      <h4>売り上げランキング</h4>
+      <table class = "table table-bordered text-center">
+        <% @items_rank.each.with_index(1) do |item_rank, i| %>
+          <tr class = "bg-warning">
+            <td><%= i %>位</td>
+            <td><%= item_rank.name %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
+  <div>
     <%= render "public/items/index", items: @items, materials: @materials %>
+  </div>
 </div>

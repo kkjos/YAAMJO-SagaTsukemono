@@ -1,36 +1,53 @@
-<div class = "row border-bottom h5">
-  <strong class = "my-auto">原菜別で見る</strong>
-  <% materials.each do |material| %>
-    <%= link_to admin_items_search_path(:id=> material.id) do %>
-        <span class = "btn btn-secondary ml-1"><%= material.name %></span>
-    <% end %>
-  <% end %>
-  <%= link_to "全ての商品", admin_items_path, class: "btn btn-secondary ml-1" %>
-</div>
-<div class = "row">
-  <div class = "col-lg-10 mx-auto mt-1">
+<div class = "row mt-3">
+  <div class = "col-lg-3 mt-5">
+    <h4>売り上げランキング</h4>
     <table class = "table table-bordered text-center">
       <tr style = "background-color:rgba(213,219,219,0.50);">
-        <th class = "col-2">商品名</th>
-        <th class = "col-1">内容量</th>
-        <th class = "col-3">税込価格(本体)</th>
-        <th class = "col-2">販売ステータス</th>
+        <th></th>
+        <th>商品名</th>
+        <th>(個)</th>
+      </tr>
+      <% @items_rank.each.with_index(1) do |item_rank, i| %>
+        <tr class = "bg-warning">
+          <td><%= i %>位</td>
+          <td><%= item_rank.name %></td>
+          <td><%= item_rank.order_details.sum(:amount) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class = "col-lg-9">
+    <div class = "border-bottom h5">
+      <strong class = "my-auto">原菜別で見る</strong>
+      <% materials.each do |material| %>
+        <%= link_to admin_items_search_path(:id=> material.id) do %>
+          <span class = "btn btn-secondary ml-1"><%= material.name %></span>
+        <% end %>
+      <% end %>
+      <%= link_to "全ての商品", admin_items_path, class: "btn btn-secondary ml-1" %>
+    </div>
+    <table class = "table table-bordered text-center">
+      <tr style = "background-color:rgba(213,219,219,0.50);">
+        <th class = "col-2"><%= sort_order "name", "商品名" %></th>
+        <th class = "col-1"><%= sort_order "capacity", "内容量" %></th>
+        <th class = "col-2"><%= sort_order "price", "税込価格(本体)" %></th>
+        <th class = "col-2"><%= sort_order "is_active", "販売ステータス" %></th>
         <th class = "col-2"></th>
       </tr>
-        <% items.each do |item| %>
-          <tr class = "bg-white">
-            <td><%= item.name %></td>
-            <td><%= item.capacity %></td>
-            <td><%= item.with_tax_price %>円 <small>(<%= item.price %>円)</small></td>
-            <% if item.is_active %>
-              <td class = "text-success">販売中</td>
-            <% else %>
-              <td class = "text-danger">販売停止中</td>
-            <% end %>
-            <td><%= link_to "商品詳細", admin_item_path(item.id), class: "btn btn-primary btn-sm" %></td>
-          </tr>
-        <% end %>
-      </table>
+      <% items.each do |item| %>
+        <tr class = "bg-white">
+          <td><%= item.name %></td>
+          <td><%= item.capacity %></td>
+          <td><%= item.with_tax_price %>円 <small>(<%= item.price %>円)</small></td>
+          <% if item.is_active %>
+            <td class = "text-success">販売中</td>
+          <% else %>
+            <td class = "text-danger">販売停止中</td>
+          <% end %>
+          <td><%= link_to "商品詳細", admin_item_path(item.id), class: "btn btn-primary btn-sm" %></td>
+        </tr>
+      <% end %>
+    </table>
     <div>
       <%= paginate items %>
     </div>

@@ -1,0 +1,59 @@
+<div class = "container">
+  <div class = "row">
+    <h3 class = "title">お問い合わせ詳細</h3>
+  </div>
+  <div class = "row">
+    <div class = "col-lg-8 mx-auto">
+      <table class = "table table-borderless border bg-white">
+        <tr>
+          <th class = "col-4">お問い合わせ内容</th>
+          <td class = "col-8"><%= @contact.message %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-lg-8 mx-auto">
+      <table class = "table table-borderless border bg-white">
+        <tr>
+          <th class = "col-4">日付</th>
+          <td class = "col-8"><%= @contact.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th>名前</th>
+          <td><%= @contact.name %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @contact.email %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @contact.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+          <% if @contact.status %>
+            <td class = "text-success">返信済</td>
+          <% else %>
+            <td class = "text-danger">未返信</td>
+          <% end %>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <%= form_with model:@contact, url:admin_contact_path(@contact), local:true do |f| %>
+              <%= f.hidden_field :status, value: true %>
+              <%= f.submit "返信済に変更する", class: "btn btn-success" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-3 mx-auto">
+      <%= link_to "お問い合わせ一覧へ", admin_contacts_path, class: "btn btn-info" %>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ ja:
       customer: 会員
       address: 配送先
       item: 商品
+      contacts: お問い合わせ
     attributes:
       customer:
         last_name: （性）
@@ -26,3 +27,8 @@ ja:
         introduction: 商品説明文
         capacity: 内容量
         price: 税抜き価格
+      contact:
+        name: 名前
+        email: メールアドレス
+        telephone_number: 電話番号
+        message: お問い合わせ内容

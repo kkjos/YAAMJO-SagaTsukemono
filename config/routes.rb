@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about'
     get '/inquiry' => 'homes#inquiry'
     get '/items/search' => 'items#search'
+    resources :contacts, only: [:new, :create]
     resources :items, only: [:index, :show]
     resources :customers, only: [] do
       collection do
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
     get '/information' => 'homes#information'
     get '/report' => 'homes#report'
     get '/items/search' => 'items#search'
+    resources :contacts, only: [:index, :show, :update]
     resources :items, except: [:destroy]
     resources :customers, except: [:new, :create, :destroy]
     resources :orders, only: [:index, :show, :update]
